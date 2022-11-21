@@ -23,7 +23,7 @@ namespace LinkPro_Proyect.Models
     
         public int SEXOID { get; set; }
         public string NOMBRE { get; set; }
-        public Nullable<bool> BHABILITADO { get; set; }
+        public Nullable<int> BHABILITADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ficha> Ficha { get; set; }

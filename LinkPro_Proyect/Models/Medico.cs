@@ -25,11 +25,11 @@ namespace LinkPro_Proyect.Models
         }
     
         public int MEDICOID { get; set; }
-        public int ID_USUARIO { get; set; }
-        public int ID_ROLM { get; set; }
-        public Nullable<int> ID_SUCURSAL { get; set; }
-        public Nullable<int> ID_DIRECCIONMED { get; set; }
-        public Nullable<int> ID_ESTADO { get; set; }
+        public Nullable<int> ID_USUARIO { get; set; }
+        public Nullable<int> ID_ROLM { get; set; }
+        public int ID_SUCURSAL { get; set; }
+        public int ID_DIRECCIONMED { get; set; }
+        public int ID_ESTADO { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string TELEFONO { get; set; }

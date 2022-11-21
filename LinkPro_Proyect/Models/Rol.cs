@@ -24,7 +24,6 @@ namespace LinkPro_Proyect.Models
         }
     
         public int ROLID { get; set; }
-        public Nullable<int> ID_USUARIO { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
         public Nullable<int> BHABILITADO { get; set; }

@@ -96,134 +96,258 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\custom.css" />
-    <Content Include="Content\css\custom.min.css" />
-    <Content Include="Content\images\back_disabled.png" />
-    <Content Include="Content\images\back_enabled.png" />
-    <Content Include="Content\images\back_enabled_hover.png" />
-    <Content Include="Content\images\forward_disabled.png" />
-    <Content Include="Content\images\forward_enabled.png" />
-    <Content Include="Content\images\forward_enabled_hover.png" />
-    <Content Include="Content\images\loading.gif" />
-    <Content Include="Content\js\custom.js" />
-    <Content Include="Content\js\custom.min.js" />
+    <Content Include="Content\ActionEdit.css" />
+    <Content Include="Content\PlantillaAlela\css\custom.css" />
+    <Content Include="Content\PlantillaAlela\css\custom.min.css" />
+    <Content Include="Content\PlantillaAlela\images\back_disabled.png" />
+    <Content Include="Content\PlantillaAlela\images\back_enabled.png" />
+    <Content Include="Content\PlantillaAlela\images\back_enabled_hover.png" />
+    <Content Include="Content\PlantillaAlela\images\forward_disabled.png" />
+    <Content Include="Content\PlantillaAlela\images\forward_enabled.png" />
+    <Content Include="Content\PlantillaAlela\images\forward_enabled_hover.png" />
+    <Content Include="Content\PlantillaAlela\images\loading.gif" />
+    <Content Include="Content\PlantillaAlela\images\user.png" />
+    <Content Include="Content\PlantillaAlela\js\custom.js" />
+    <Content Include="Content\PlantillaAlela\js\custom.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Entities_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Entities_Model.edmx</DependentUpon>
-      <LastGenOutput>Entities_Model.Context.cs</LastGenOutput>
+    <EntityDeploy Include="Models\LinkPro_Models.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LinkPro_Models.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LinkPro_Models.edmx.diagram">
+      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Entities_Model.tt">
+    <Content Include="Models\LinkPro_Models.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Entities_Model.edmx</DependentUpon>
-      <LastGenOutput>Entities_Model.cs</LastGenOutput>
+      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
+      <LastGenOutput>LinkPro_Models.Context.cs</LastGenOutput>
     </Content>
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Models\LinkPro_Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
+      <LastGenOutput>LinkPro_Models.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\Vendors\animate.css\animate.css" />
+    <Content Include="Scripts\Vendors\animate.css\animate.min.css" />
+    <Content Include="Scripts\Vendors\animate.css\gulpfile.js" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\alert.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\button.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\carousel.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\collapse.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\dropdown.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\index.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\modal.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\popover.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\scrollspy.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\tab.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\toast.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\tooltip.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\util.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\alert.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\button.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\carousel.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\collapse.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\dropdown.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\index.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\modal.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\popover.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\scrollspy.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\tab.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\toast.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\tools\sanitizer.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\tooltip.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\src\util.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\browsers.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\index.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\integration\bundle.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\integration\index.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\integration\rollup.bundle.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\karma.conf.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\alert.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\button.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\carousel.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\collapse.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\dropdown.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\modal.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\popover.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\scrollspy.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\tab.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\toast.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\tooltip.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\util.js" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\alert.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\button.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\carousel.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\collapse.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\dropdown.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\modal.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\popover.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\scrollspy.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\tab.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\toast.html" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\tooltip.html" />
+    <Content Include="Scripts\Vendors\fontawesome\css\font-awesome.css" />
+    <Content Include="Scripts\Vendors\fontawesome\css\font-awesome.min.css" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Vendors\jquery\dist\jquery.js" />
+    <Content Include="Scripts\Vendors\jquery\dist\jquery.min.js" />
+    <Content Include="Scripts\Vendors\nprogress\index.html" />
+    <Content Include="Scripts\Vendors\nprogress\nprogress.css" />
+    <Content Include="Scripts\Vendors\nprogress\nprogress.js" />
+    <Content Include="Scripts\Vendors\nprogress\support\extras.css" />
+    <Content Include="Scripts\Vendors\nprogress\support\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Afiliacion.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Citas.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ciudad.cs">
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comuna.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DireccionMed.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Documentos.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities_Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Entities_Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities_Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Entities_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities_Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Entities_Model.edmx</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Especialidad.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ficha.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Horario.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinkPro_Models.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinkPro_Models.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinkPro_Models.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinkPro_Models.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico_Especial.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Paciente.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pac_Med.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pagina.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RolPagina.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sexo.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursal.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Entities_Model.tt</DependentUpon>
+      <DependentUpon>LinkPro_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\Entities_Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Entities_Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Entities_Model.edmx.diagram">
-      <DependentUpon>Entities_Model.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\alert.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\button.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\carousel.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\collapse.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\dropdown.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\index.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\modal.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\popover.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\scrollspy.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\tab.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\toast.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\tooltip.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\dist\util.js.map" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\README.md" />
+    <Content Include="Scripts\Vendors\bootstrap\js\tests\unit\.eslintrc.json" />
+    <Content Include="Scripts\Vendors\fontawesome\css\font-awesome.css.map" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\Vendors\fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\Vendors\nprogress\.bower.json" />
+    <Content Include="Scripts\Vendors\nprogress\bower.json" />
+    <Content Include="Scripts\Vendors\nprogress\component.json" />
+    <Content Include="Scripts\Vendors\nprogress\History.md" />
+    <Content Include="Scripts\Vendors\nprogress\License.md" />
+    <Content Include="Scripts\Vendors\nprogress\Notes.md" />
+    <Content Include="Scripts\Vendors\nprogress\Readme.md" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Scripts\Vendors\jquery\dist\jquery.min.map" />
+    <Content Include="Views\Users\Log.cshtml" />
+    <Content Include="Scripts\Vendors\animate.css\.bower.json" />
+    <Content Include="Scripts\Vendors\animate.css\animate-config.json" />
+    <Content Include="Scripts\Vendors\animate.css\bower.json" />
+    <Content Include="Scripts\Vendors\animate.css\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

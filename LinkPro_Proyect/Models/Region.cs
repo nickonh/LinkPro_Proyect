@@ -17,6 +17,7 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
         {
+            this.Ciudad = new HashSet<Ciudad>();
             this.DireccionMed = new HashSet<DireccionMed>();
         }
     
@@ -24,6 +25,8 @@ namespace LinkPro_Proyect.Models
         public string NOMBRE { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ciudad> Ciudad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DireccionMed> DireccionMed { get; set; }
     }

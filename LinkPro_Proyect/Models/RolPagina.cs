@@ -15,9 +15,9 @@ namespace LinkPro_Proyect.Models
     public partial class RolPagina
     {
         public int ROLPAGINAID { get; set; }
-        public int ID_ROLPA { get; set; }
-        public int ID_PAGINA { get; set; }
-        public int BHABILITADO { get; set; }
+        public Nullable<int> ID_ROLPA { get; set; }
+        public Nullable<int> ID_PAGINA { get; set; }
+        public Nullable<int> BHABILITADO { get; set; }
     
         public virtual Pagina Pagina { get; set; }
         public virtual Rol Rol { get; set; }

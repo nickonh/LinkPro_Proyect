@@ -40,6 +40,8 @@ namespace LinkPro_Proyect.Models
         public string EMAIL { get; set; }
         public System.DateTime FECHA_INSCRITO { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
+        public int ID_CIUDAD { get; set; }
+        public int ID_REGION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Citas> Citas { get; set; }

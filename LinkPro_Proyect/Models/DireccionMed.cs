@@ -22,10 +22,12 @@ namespace LinkPro_Proyect.Models
         }
     
         public int DIRECCIONMEDID { get; set; }
-        public int ID_COMUNA { get; set; }
-        public int ID_REGION { get; set; }
+        public Nullable<int> ID_COMUNA { get; set; }
+        public Nullable<int> ID_REGION { get; set; }
         public string DIRECCION { get; set; }
+        public int ID_CIUDAD { get; set; }
     
+        public virtual Ciudad Ciudad { get; set; }
         public virtual Comuna Comuna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sucursal> Sucursal { get; set; }

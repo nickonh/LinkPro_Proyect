@@ -24,7 +24,9 @@ namespace LinkPro_Proyect.Models
         public int COMUNAID { get; set; }
         public string NOMBRE { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
+        public int ID_CIUDAD { get; set; }
     
+        public virtual Ciudad Ciudad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DireccionMed> DireccionMed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
