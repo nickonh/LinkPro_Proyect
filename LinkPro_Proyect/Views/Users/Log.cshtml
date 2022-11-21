@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*<link rel="icon" href="images/favicon.ico" type="image/ico" />*@
+
+    <title>LinkPro! |</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Scripts/Vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/Scripts/Vendors/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/Scripts/Vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link href="~/Scripts/Vendors/animate.css/animate.min.css" rel="stylesheet" />.
+    <!-- ActionEdit.css -->
+    <link href="../../Content/ActionEdit.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/Content/PlantillaAlela/css/custom.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1><i class="fa fa-stethoscope"></i> LinkPro !</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Constraseña" required="" />
+                        </div>
+                        <div>
+                            <a class="btn btn-default submit" href="/AdminHome/Index">Ingresar</a> <!-- ACTIONLINK PARA INGRESAR -->
+                            <a class="reset_pass" href="">¿Has Olvidado tú Contraseña?</a> <!-- Vista de Recuperación de Contraseña -->
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                ¿Nuevo en el sitio?
+                                <a href="#signup" class="to_register"> Crear Cuenta </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+                        </div>
+                        <div>
+                            @Html.ActionLink("Volver a LinkPro", "Index", "AdminHome", null, new { @class = "btn btn-danger" })
+                        </div>
+                    </form>
+                    <div>
+                        <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form>
+                        <h1><i class="fa fa-stethoscope"></i> LinkPro !</h1>
+                        <h1>Crear una Cuenta Nueva</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Nombre de Usuario" required="" />
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Correo" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Contraseña" required="" />
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    <input type="submit" class="btn btn-primary" value="Registrar" />
+                    <div class="separator">
+                        <p class="change_link">
+                            ¿Ya estas registrado?
+                            <a href="#signin" class="to_register"> Ingresar </a>
+                        </p>
+                        <div class="clearfix"></div>
+                        <br />
+                    </div>
+                    <div>
+                        <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

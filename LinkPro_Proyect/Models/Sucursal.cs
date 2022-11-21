@@ -22,7 +22,7 @@ namespace LinkPro_Proyect.Models
     
         public int SUCURSALID { get; set; }
         public string NOMBRE_SUCURSAL { get; set; }
-        public int ID_DIRECCIONMED { get; set; }
+        public Nullable<int> ID_DIRECCIONMED { get; set; }
         public string COMUNA { get; set; }
         public Nullable<System.DateTime> FECHA_REGISTRO { get; set; }
         public string USUARIO_REGISTRO { get; set; }
