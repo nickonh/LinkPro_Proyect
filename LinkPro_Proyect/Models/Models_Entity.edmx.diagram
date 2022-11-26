@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86166a3c0d3048689b62a3a9567c4b4f" Name="Diagram1">
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Afiliacion" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Citas" Width="1.5" PointX="9.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Ciudad" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Comuna" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Documentos" Width="1.5" PointX="7.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Especialidad" Width="1.5" PointX="8.25" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Estado" Width="1.5" PointX="3" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Ficha" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Horario" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Medico" Width="1.5" PointX="5.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Medico_Especial" Width="1.5" PointX="10.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Pac_Med" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Paciente" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Pagina" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Region" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Rol" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.RolPagina" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Sexo" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Sucursal" Width="1.5" PointX="7.5" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Usuario" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_AFILIACION" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESTADOC" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_HORARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICOC" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_CIUDAD_SU" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_REGION_C" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_COMUNA_SU" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_COMUNAP" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_DOCUMENTO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICODOC" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_PACIENTEDOC" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESPECIALIDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESTADO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESTADOP" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_FICHA" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_SEXO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO_SU" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICOE" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICOESPECIAL" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_SUCURSAL" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_PACIENTE_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROLP" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_SEXOP" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_USUARIOP" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_PAGINA" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_REGION_SU" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROLPG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

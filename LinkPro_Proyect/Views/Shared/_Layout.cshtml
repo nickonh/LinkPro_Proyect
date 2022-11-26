@@ -10,12 +10,36 @@
 
     <title>@ViewBag.Title | LinkPro!</title>
 
+    <!-- jQuery -->
+    <script src="~/Scripts/Vendors/jquery/dist/jquery.min.js"></script>
+
     <!-- Bootstrap -->
     <link href="~/Scripts/Vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <link href="~/Scripts/Vendors/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
     <!-- NProgress -->
     <link href="~/Scripts/Vendors/nprogress/nprogress.css" rel="stylesheet" />
+
+    <!-- iCheck -->
+    <link href="~/Scripts/Vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+    <!-- bootstrap-wysiwyg -->
+    <link href="~/Scripts/Vendors/google-code-prettify/prettify.min.css" rel="stylesheet" />
+    <!-- Select2 -->
+    <link href="~/Scripts/Vendors/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Switchery -->
+    <link href="~/Scripts/Vendors/switchery/dist/switchery.min.css" rel="stylesheet" />
+    <!-- starrr -->
+    <link href="~/Scripts/Vendors/starrr/dist/starrr.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/Scripts/Vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- FullCalendar -->
+    <link href="~/Scripts/Vendors/FullCalendar/core/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Vendors/FullCalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Vendors/FullCalendar/timegrid/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Vendors/FullCalendar/list/main.css" rel="stylesheet" />
+
+    <!-- Creados -->
+    <link href="~/Content/ActionEdit.css" rel="stylesheet" />
 
 
     <!-- Custom Theme Style -->
@@ -52,7 +76,8 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/AdminHome/Index">Inicio</a></li>
                                     </ul>
@@ -60,13 +85,13 @@
                                 <li>
                                     <a><i class="fa fa-user"></i> Gestion de Pacientes <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="">Listar Pacientes</a></li> <!-- Form de Listar Pacientes Medico -->
+                                        <li><a href="/GestionPaciente/Pacientes">Listar Pacientes</a></li> <!-- Form de Listar Pacientes Medico -->
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-table"></i> Gestion de Horario <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="">Mi Horario</a></li> <!-- Form de Registro de Horario Medico -->
+                                        <li><a href="/GestionPaciente/Index">Mi Horario</a></li> <!-- Form de Registro de Horario Medico -->
                                     </ul>
                                 </li>
                                 <li>
@@ -84,12 +109,15 @@
                         <a data-toggle="tooltip" data-placement="top">
                             <span aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                            <!-- agregar el Action de deslogueo -->
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        <a data-toggle="tooltip" data-placement="top">
+                            <span aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top">
                             <span aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/Users/Log">
+
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span><!-- agregar el Action de deslogueo -->
                         </a>
                     </div>
                     <!-- /menu footer buttons -->
@@ -121,7 +149,7 @@
                                 <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="~/Content/images/user.png" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/Content/PlantillaAlela/images/user.png" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -133,7 +161,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="~/Content/images/user.png" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/Content/PlantillaAlela/images/user.png" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -145,7 +173,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="~/Content/images/user.png" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/Content/PlantillaAlela/images/user.png" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -157,7 +185,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="dropdown-item">
-                                            <span class="image"><img src="~/Content/images/user.png" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/Content/PlantillaAlela/images/user.png" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -197,10 +225,40 @@
             <!-- /footer content -->
         </div>
     </div>
-
-    <script src="~/Scripts/Vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
     <script src="~/Scripts/Vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- NProgress -->
     <script src="~/Scripts/Vendors/nprogress/nprogress.js"></script>
-    <script src="~/Content/PlantillaAlela/js/custom.js"></script>
+
+    <!-- iCheck -->
+    <script src="~/Scripts/Vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/Scripts/Vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="~/Scripts/Vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- Switchery -->
+    <script src="~/Scripts/Vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Scripts/Vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- starrr -->
+    <script src="~/Scripts/Vendors/starrr/dist/starrr.js"></script>
+    <!-- FullCalendar -->
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/core/locales/es.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/core/main.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/interaction/main.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/daygrid/main.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/timegrid/main.js"></script>
+    <script src="~/Scripts/Vendors/FullCalendar/list/main.js"></script>
+
+    <!-- FastClick -->
+    <script src="~/Scripts/Vendors/fastclick/lib/fastclick.js"></script>
+
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/Content/PlantillaAlela/js/custom.min.js"></script>
+
+
+
 </body>
 </html>
