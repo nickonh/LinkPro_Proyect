@@ -18,7 +18,7 @@ namespace LinkPro_Proyect.Models
         public Region()
         {
             this.Ciudad = new HashSet<Ciudad>();
-            this.DireccionMed = new HashSet<DireccionMed>();
+            this.Sucursal = new HashSet<Sucursal>();
         }
     
         public int REGIONID { get; set; }
@@ -28,6 +28,6 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ciudad> Ciudad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DireccionMed> DireccionMed { get; set; }
+        public virtual ICollection<Sucursal> Sucursal { get; set; }
     }
 }

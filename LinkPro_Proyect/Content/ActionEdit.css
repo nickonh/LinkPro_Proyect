@@ -1,3 +1,18 @@
 ﻿.FooterSizeLog {
     font-size:26px ;
 }
+
+.MoveForm{
+    margin-right: auto;
+}
+
+.horizontal-scrollable > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.horizontal-scrollable > .row > .col-xs-4 
+{
+    display: inline-block;
+    float: none;
+
+}

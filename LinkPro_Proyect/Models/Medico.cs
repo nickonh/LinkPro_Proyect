@@ -21,15 +21,14 @@ namespace LinkPro_Proyect.Models
             this.Documentos = new HashSet<Documentos>();
             this.Horario = new HashSet<Horario>();
             this.Pac_Med = new HashSet<Pac_Med>();
+            this.Sucursal = new HashSet<Sucursal>();
             this.Medico_Especial = new HashSet<Medico_Especial>();
         }
     
         public int MEDICOID { get; set; }
         public Nullable<int> ID_USUARIO { get; set; }
-        public Nullable<int> ID_ROLM { get; set; }
-        public int ID_SUCURSAL { get; set; }
-        public int ID_DIRECCIONMED { get; set; }
-        public int ID_ESTADO { get; set; }
+        public Nullable<int> ID_SUCURSAL { get; set; }
+        public Nullable<int> ID_ESTADO { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string TELEFONO { get; set; }
@@ -37,10 +36,10 @@ namespace LinkPro_Proyect.Models
         public Nullable<System.DateTime> FECHA_REGISTRO { get; set; }
         public string USUARIO_REGISTRO { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
+        public Nullable<int> ID_MEDICOESPECIAL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Citas> Citas { get; set; }
-        public virtual DireccionMed DireccionMed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Documentos> Documentos { get; set; }
         public virtual Estado Estado { get; set; }
@@ -49,9 +48,11 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pac_Med> Pac_Med { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sucursal> Sucursal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico_Especial> Medico_Especial { get; set; }
-        public virtual Rol Rol { get; set; }
-        public virtual Sucursal Sucursal { get; set; }
+        public virtual Medico_Especial Medico_Especial1 { get; set; }
+        public virtual Sucursal Sucursal1 { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

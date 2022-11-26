@@ -17,13 +17,13 @@ namespace LinkPro_Proyect.Models
         public int CITASID { get; set; }
         public int ID_MEDICO { get; set; }
         public int ID_PACIENTE { get; set; }
-        public int ID_ESTADO { get; set; }
+        public Nullable<int> ID_ESTADO { get; set; }
         public Nullable<int> CODE_RESERVAID { get; set; }
         public Nullable<System.DateTime> FECHA_ATENCION { get; set; }
         public Nullable<System.TimeSpan> START_ATENCION { get; set; }
         public Nullable<System.TimeSpan> END_ATENCION { get; set; }
         public string OBSERVACIONES { get; set; }
-        public Nullable<int> ID_HORARIO { get; set; }
+        public int ID_HORARIO { get; set; }
     
         public virtual Estado Estado { get; set; }
         public virtual Horario Horario { get; set; }

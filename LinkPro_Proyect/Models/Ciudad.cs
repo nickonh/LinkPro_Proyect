@@ -18,7 +18,7 @@ namespace LinkPro_Proyect.Models
         public Ciudad()
         {
             this.Comuna = new HashSet<Comuna>();
-            this.DireccionMed = new HashSet<DireccionMed>();
+            this.Sucursal = new HashSet<Sucursal>();
         }
     
         public int CIUDADID { get; set; }
@@ -29,7 +29,7 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comuna> Comuna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DireccionMed> DireccionMed { get; set; }
+        public virtual ICollection<Sucursal> Sucursal { get; set; }
         public virtual Region Region { get; set; }
     }
 }

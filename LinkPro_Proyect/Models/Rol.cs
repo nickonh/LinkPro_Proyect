@@ -17,7 +17,6 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rol()
         {
-            this.Medico = new HashSet<Medico>();
             this.Paciente = new HashSet<Paciente>();
             this.Usuario = new HashSet<Usuario>();
             this.RolPagina = new HashSet<RolPagina>();
@@ -28,8 +27,6 @@ namespace LinkPro_Proyect.Models
         public string DESCRIPCION { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Medico> Medico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paciente> Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ActionEdit.css" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.min.css" />
+    <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\PlantillaAlela\css\custom.css" />
     <Content Include="Content\PlantillaAlela\css\custom.min.css" />
     <Content Include="Content\PlantillaAlela\images\back_disabled.png" />
@@ -109,27 +113,169 @@
     <Content Include="Content\PlantillaAlela\images\user.png" />
     <Content Include="Content\PlantillaAlela\js\custom.js" />
     <Content Include="Content\PlantillaAlela\js\custom.min.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\LinkPro_Models.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LinkPro_Models.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\LinkPro_Models.edmx.diagram">
-      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\LinkPro_Models.Context.tt">
+    <Content Include="Models\Models_Entity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
-      <LastGenOutput>LinkPro_Models.Context.cs</LastGenOutput>
+      <DependentUpon>Models_Entity.edmx</DependentUpon>
+      <LastGenOutput>Models_Entity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LinkPro_Models.tt">
+    <Content Include="Models\Models_Entity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
-      <LastGenOutput>LinkPro_Models.cs</LastGenOutput>
+      <DependentUpon>Models_Entity.edmx</DependentUpon>
+      <LastGenOutput>Models_Entity.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\gcal.js" />
+    <Content Include="Scripts\gcal.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Scripts\lib\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\lib\cupertino\jquery-ui.min.css" />
+    <Content Include="Scripts\lib\jquery-ui.min.js" />
+    <Content Include="Scripts\lib\jquery.min.js" />
+    <Content Include="Scripts\lib\moment.min.js" />
+    <Content Include="Scripts\locale-all.js" />
+    <Content Include="Scripts\locale\af.js" />
+    <Content Include="Scripts\locale\ar-dz.js" />
+    <Content Include="Scripts\locale\ar-ly.js" />
+    <Content Include="Scripts\locale\ar-ma.js" />
+    <Content Include="Scripts\locale\ar-sa.js" />
+    <Content Include="Scripts\locale\ar-tn.js" />
+    <Content Include="Scripts\locale\ar.js" />
+    <Content Include="Scripts\locale\bg.js" />
+    <Content Include="Scripts\locale\ca.js" />
+    <Content Include="Scripts\locale\cs.js" />
+    <Content Include="Scripts\locale\da.js" />
+    <Content Include="Scripts\locale\de-at.js" />
+    <Content Include="Scripts\locale\de.js" />
+    <Content Include="Scripts\locale\el.js" />
+    <Content Include="Scripts\locale\en-au.js" />
+    <Content Include="Scripts\locale\en-ca.js" />
+    <Content Include="Scripts\locale\en-gb.js" />
+    <Content Include="Scripts\locale\en-ie.js" />
+    <Content Include="Scripts\locale\en-nz.js" />
+    <Content Include="Scripts\locale\es-do.js" />
+    <Content Include="Scripts\locale\es.js" />
+    <Content Include="Scripts\locale\eu.js" />
+    <Content Include="Scripts\locale\fa.js" />
+    <Content Include="Scripts\locale\fi.js" />
+    <Content Include="Scripts\locale\fr-ca.js" />
+    <Content Include="Scripts\locale\fr-ch.js" />
+    <Content Include="Scripts\locale\fr.js" />
+    <Content Include="Scripts\locale\gl.js" />
+    <Content Include="Scripts\locale\he.js" />
+    <Content Include="Scripts\locale\hi.js" />
+    <Content Include="Scripts\locale\hr.js" />
+    <Content Include="Scripts\locale\hu.js" />
+    <Content Include="Scripts\locale\id.js" />
+    <Content Include="Scripts\locale\is.js" />
+    <Content Include="Scripts\locale\it.js" />
+    <Content Include="Scripts\locale\ja.js" />
+    <Content Include="Scripts\locale\kk.js" />
+    <Content Include="Scripts\locale\ko.js" />
+    <Content Include="Scripts\locale\lb.js" />
+    <Content Include="Scripts\locale\lt.js" />
+    <Content Include="Scripts\locale\lv.js" />
+    <Content Include="Scripts\locale\mk.js" />
+    <Content Include="Scripts\locale\ms-my.js" />
+    <Content Include="Scripts\locale\ms.js" />
+    <Content Include="Scripts\locale\nb.js" />
+    <Content Include="Scripts\locale\nl-be.js" />
+    <Content Include="Scripts\locale\nl.js" />
+    <Content Include="Scripts\locale\nn.js" />
+    <Content Include="Scripts\locale\pl.js" />
+    <Content Include="Scripts\locale\pt-br.js" />
+    <Content Include="Scripts\locale\pt.js" />
+    <Content Include="Scripts\locale\ro.js" />
+    <Content Include="Scripts\locale\ru.js" />
+    <Content Include="Scripts\locale\sk.js" />
+    <Content Include="Scripts\locale\sl.js" />
+    <Content Include="Scripts\locale\sr-cyrl.js" />
+    <Content Include="Scripts\locale\sr.js" />
+    <Content Include="Scripts\locale\sv.js" />
+    <Content Include="Scripts\locale\th.js" />
+    <Content Include="Scripts\locale\tr.js" />
+    <Content Include="Scripts\locale\uk.js" />
+    <Content Include="Scripts\locale\vi.js" />
+    <Content Include="Scripts\locale\zh-cn.js" />
+    <Content Include="Scripts\locale\zh-tw.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Vendors\animate.css\animate.css" />
     <Content Include="Scripts\Vendors\animate.css\animate.min.css" />
     <Content Include="Scripts\Vendors\animate.css\gulpfile.js" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\drp.png" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\package.js" />
     <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="Scripts\Vendors\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -196,110 +342,727 @@
     <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\tab.html" />
     <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\toast.html" />
     <Content Include="Scripts\Vendors\bootstrap\js\tests\visual\tooltip.html" />
+    <Content Include="Scripts\Vendors\fastclick\lib\fastclick.js" />
     <Content Include="Scripts\Vendors\fontawesome\css\font-awesome.css" />
     <Content Include="Scripts\Vendors\fontawesome\css\font-awesome.min.css" />
     <Content Include="Scripts\Vendors\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales-all.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales-all.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\af.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-dz.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-kw.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-ly.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-ma.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-sa.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar-tn.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ar.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\bg.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\bs.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ca.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\cs.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\da.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\de.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\el.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\en-au.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\en-gb.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\en-nz.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\es-us.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\es.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\et.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\eu.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\fa.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\fi.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\fr-ca.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\fr-ch.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\fr.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\gl.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\he.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\hi.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\hr.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\hu.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\id.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\is.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\it.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ja.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ka.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\kk.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ko.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\lb.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\lt.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\lv.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\mk.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ms.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\nb.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\nl.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\nn.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\pl.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\pt-br.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\pt.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ro.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\ru.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sk.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sl.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sq.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sr-cyrl.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sr.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\sv.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\th.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\tr.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\uk.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\vi.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\zh-cn.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\locales\zh-tw.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\main.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\main.min.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\core\main.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\daygrid\main.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\daygrid\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\daygrid\main.min.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\daygrid\main.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\interaction\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\interaction\main.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\list\main.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\list\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\list\main.min.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\list\main.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\moment\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\moment\main.min.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\timegrid\main.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\timegrid\main.js" />
+    <Content Include="Scripts\Vendors\FullCalendar\timegrid\main.min.css" />
+    <Content Include="Scripts\Vendors\FullCalendar\timegrid\main.min.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\prettify.min.css" />
+    <Content Include="Scripts\Vendors\google-code-prettify\prettify.min.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\run_prettify.min.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-apollo.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-basic.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-clj.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-css.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-dart.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-erlang.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-go.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-hs.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-lisp.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-llvm.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-lua.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-matlab.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-ml.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-mumps.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-n.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-pascal.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-proto.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-r.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-rd.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-scala.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-sql.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-tcl.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-tex.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-vb.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-vhdl.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-wiki.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-xq.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\lang-yaml.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\prettify.css" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\prettify.js" />
+    <Content Include="Scripts\Vendors\google-code-prettify\src\run_prettify.js" />
+    <Content Include="Scripts\Vendors\iCheck\icheck.js" />
+    <Content Include="Scripts\Vendors\iCheck\icheck.min.js" />
+    <Content Include="Scripts\Vendors\iCheck\skins\all.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\aero%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\aero.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\aero.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\blue%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\blue.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\blue.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\flat%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\flat.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\flat.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\green%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\green.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\green.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\grey%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\grey.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\grey.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\orange%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\orange.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\orange.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\pink%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\pink.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\pink.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\purple%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\purple.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\purple.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\red%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\red.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\red.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\yellow%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\yellow.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\yellow.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\flat\_all.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\futurico\futurico%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\futurico\futurico.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\futurico\futurico.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\aero.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\blue.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\green.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\grey.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\line%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\line.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\line.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\orange.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\pink.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\purple.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\red.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\yellow.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\line\_all.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\aero%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\aero.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\aero.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\blue%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\blue.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\blue.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\green%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\green.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\green.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\grey%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\grey.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\grey.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\minimal%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\minimal.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\minimal.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\orange%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\orange.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\orange.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\pink%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\pink.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\pink.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\purple%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\purple.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\purple.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\red%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\red.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\red.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\yellow%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\yellow.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\yellow.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\minimal\_all.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\polaris\polaris%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\polaris\polaris.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\polaris\polaris.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\aero%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\aero.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\aero.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\blue%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\blue.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\blue.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\green%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\green.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\green.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\grey%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\grey.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\grey.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\orange%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\orange.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\orange.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\pink%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\pink.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\pink.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\purple%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\purple.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\purple.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\red%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\red.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\red.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\square%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\square.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\square.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\yellow%402x.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\yellow.css" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\yellow.png" />
+    <Content Include="Scripts\Vendors\iCheck\skins\square\_all.css" />
     <Content Include="Scripts\Vendors\jquery\dist\jquery.js" />
     <Content Include="Scripts\Vendors\jquery\dist\jquery.min.js" />
+    <Content Include="Scripts\Vendors\moment\locale\af.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ar-ma.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ar-sa.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ar-tn.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ar.js" />
+    <Content Include="Scripts\Vendors\moment\locale\az.js" />
+    <Content Include="Scripts\Vendors\moment\locale\be.js" />
+    <Content Include="Scripts\Vendors\moment\locale\bg.js" />
+    <Content Include="Scripts\Vendors\moment\locale\bn.js" />
+    <Content Include="Scripts\Vendors\moment\locale\bo.js" />
+    <Content Include="Scripts\Vendors\moment\locale\br.js" />
+    <Content Include="Scripts\Vendors\moment\locale\bs.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ca.js" />
+    <Content Include="Scripts\Vendors\moment\locale\cs.js" />
+    <Content Include="Scripts\Vendors\moment\locale\cv.js" />
+    <Content Include="Scripts\Vendors\moment\locale\cy.js" />
+    <Content Include="Scripts\Vendors\moment\locale\da.js" />
+    <Content Include="Scripts\Vendors\moment\locale\de-at.js" />
+    <Content Include="Scripts\Vendors\moment\locale\de.js" />
+    <Content Include="Scripts\Vendors\moment\locale\dv.js" />
+    <Content Include="Scripts\Vendors\moment\locale\el.js" />
+    <Content Include="Scripts\Vendors\moment\locale\en-au.js" />
+    <Content Include="Scripts\Vendors\moment\locale\en-ca.js" />
+    <Content Include="Scripts\Vendors\moment\locale\en-gb.js" />
+    <Content Include="Scripts\Vendors\moment\locale\en-ie.js" />
+    <Content Include="Scripts\Vendors\moment\locale\en-nz.js" />
+    <Content Include="Scripts\Vendors\moment\locale\eo.js" />
+    <Content Include="Scripts\Vendors\moment\locale\es.js" />
+    <Content Include="Scripts\Vendors\moment\locale\et.js" />
+    <Content Include="Scripts\Vendors\moment\locale\eu.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fa.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fi.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fo.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fr-ca.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fr-ch.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fr.js" />
+    <Content Include="Scripts\Vendors\moment\locale\fy.js" />
+    <Content Include="Scripts\Vendors\moment\locale\gd.js" />
+    <Content Include="Scripts\Vendors\moment\locale\gl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\he.js" />
+    <Content Include="Scripts\Vendors\moment\locale\hi.js" />
+    <Content Include="Scripts\Vendors\moment\locale\hr.js" />
+    <Content Include="Scripts\Vendors\moment\locale\hu.js" />
+    <Content Include="Scripts\Vendors\moment\locale\hy-am.js" />
+    <Content Include="Scripts\Vendors\moment\locale\id.js" />
+    <Content Include="Scripts\Vendors\moment\locale\is.js" />
+    <Content Include="Scripts\Vendors\moment\locale\it.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ja.js" />
+    <Content Include="Scripts\Vendors\moment\locale\jv.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ka.js" />
+    <Content Include="Scripts\Vendors\moment\locale\kk.js" />
+    <Content Include="Scripts\Vendors\moment\locale\km.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ko.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ky.js" />
+    <Content Include="Scripts\Vendors\moment\locale\lb.js" />
+    <Content Include="Scripts\Vendors\moment\locale\lo.js" />
+    <Content Include="Scripts\Vendors\moment\locale\lt.js" />
+    <Content Include="Scripts\Vendors\moment\locale\lv.js" />
+    <Content Include="Scripts\Vendors\moment\locale\me.js" />
+    <Content Include="Scripts\Vendors\moment\locale\mk.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ml.js" />
+    <Content Include="Scripts\Vendors\moment\locale\mr.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ms-my.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ms.js" />
+    <Content Include="Scripts\Vendors\moment\locale\my.js" />
+    <Content Include="Scripts\Vendors\moment\locale\nb.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ne.js" />
+    <Content Include="Scripts\Vendors\moment\locale\nl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\nn.js" />
+    <Content Include="Scripts\Vendors\moment\locale\pa-in.js" />
+    <Content Include="Scripts\Vendors\moment\locale\pl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\pt-br.js" />
+    <Content Include="Scripts\Vendors\moment\locale\pt.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ro.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ru.js" />
+    <Content Include="Scripts\Vendors\moment\locale\se.js" />
+    <Content Include="Scripts\Vendors\moment\locale\si.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sk.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sq.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sr-cyrl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sr.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ss.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sv.js" />
+    <Content Include="Scripts\Vendors\moment\locale\sw.js" />
+    <Content Include="Scripts\Vendors\moment\locale\ta.js" />
+    <Content Include="Scripts\Vendors\moment\locale\te.js" />
+    <Content Include="Scripts\Vendors\moment\locale\th.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tl-ph.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tlh.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tr.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tzl.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tzm-latn.js" />
+    <Content Include="Scripts\Vendors\moment\locale\tzm.js" />
+    <Content Include="Scripts\Vendors\moment\locale\uk.js" />
+    <Content Include="Scripts\Vendors\moment\locale\uz.js" />
+    <Content Include="Scripts\Vendors\moment\locale\vi.js" />
+    <Content Include="Scripts\Vendors\moment\locale\x-pseudo.js" />
+    <Content Include="Scripts\Vendors\moment\locale\zh-cn.js" />
+    <Content Include="Scripts\Vendors\moment\locale\zh-tw.js" />
+    <Content Include="Scripts\Vendors\moment\min\locales.js" />
+    <Content Include="Scripts\Vendors\moment\min\locales.min.js" />
+    <Content Include="Scripts\Vendors\moment\min\moment-with-locales.js" />
+    <Content Include="Scripts\Vendors\moment\min\moment-with-locales.min.js" />
+    <Content Include="Scripts\Vendors\moment\min\moment.min.js" />
+    <Content Include="Scripts\Vendors\moment\min\tests.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\check-overflow.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\date-from-array.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-anything.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-array.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-object.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-string-and-array.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-string-and-format.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\from-string.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\local.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\parsing-flags.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\utc.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\create\valid.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\abs.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\add-subtract.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\as.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\bubble.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\constructor.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\create.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\duration.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\get.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\humanize.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\iso-string.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\duration\prototype.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\format\format.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\calendar.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\constructor.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\en.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\formats.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\invalid.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\lists.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\locale.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\locales.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\ordinal.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\pre-post-format.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\prototype.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\relative.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\locale\set.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\add-subtract.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\calendar.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\clone.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\compare.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\constructor.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\creation-data.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\diff.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\format.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\from.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\get-set.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\locale.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\min-max.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\moment.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\now.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\prototype.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\start-end-of.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\to-type.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\to.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\moment\valid.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\parse\regex.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\parse\token.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\aliases.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\constants.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\day-of-month.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\day-of-week.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\day-of-year.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\hour.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\millisecond.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\minute.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\month.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\offset.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\quarter.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\second.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\timestamp.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\timezone.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\units.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\week-calendar-utils.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\week-year.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\week.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\units\year.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\abs-ceil.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\abs-floor.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\abs-round.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\compare-arrays.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\defaults.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\deprecate.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\extend.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\has-own-prop.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\hooks.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\index-of.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\is-array.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\is-date.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\is-function.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\is-object.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\is-undefined.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\keys.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\map.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\some.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\to-int.js" />
+    <Content Include="Scripts\Vendors\moment\src\lib\utils\zero-fill.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\af.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ar-ma.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ar-sa.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ar-tn.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ar.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\az.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\be.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\bg.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\bn.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\bo.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\br.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\bs.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ca.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\cs.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\cv.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\cy.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\da.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\de-at.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\de.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\dv.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\el.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\en-au.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\en-ca.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\en-gb.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\en-ie.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\en-nz.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\eo.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\es.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\et.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\eu.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fa.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fi.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fo.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fr-ca.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fr-ch.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fr.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\fy.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\gd.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\gl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\he.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\hi.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\hr.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\hu.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\hy-am.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\id.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\is.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\it.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ja.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\jv.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ka.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\kk.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\km.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ko.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ky.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\lb.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\lo.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\lt.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\lv.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\me.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\mk.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ml.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\mr.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ms-my.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ms.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\my.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\nb.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ne.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\nl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\nn.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\pa-in.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\pl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\pt-br.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\pt.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ro.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ru.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\se.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\si.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sk.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sq.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sr-cyrl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sr.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ss.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sv.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\sw.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\ta.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\te.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\th.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tl-ph.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tlh.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tr.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tzl.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tzm-latn.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\tzm.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\uk.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\uz.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\vi.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\x-pseudo.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\zh-cn.js" />
+    <Content Include="Scripts\Vendors\moment\src\locale\zh-tw.js" />
+    <Content Include="Scripts\Vendors\moment\src\moment.js" />
+    <Content Include="Scripts\Vendors\moment\templates\amd-named.js" />
+    <Content Include="Scripts\Vendors\moment\templates\amd.js" />
+    <Content Include="Scripts\Vendors\moment\templates\default.js" />
+    <Content Include="Scripts\Vendors\moment\templates\globals.js" />
+    <Content Include="Scripts\Vendors\moment\templates\locale-header.js" />
+    <Content Include="Scripts\Vendors\moment\templates\test-header.js" />
     <Content Include="Scripts\Vendors\nprogress\index.html" />
     <Content Include="Scripts\Vendors\nprogress\nprogress.css" />
     <Content Include="Scripts\Vendors\nprogress\nprogress.js" />
     <Content Include="Scripts\Vendors\nprogress\support\extras.css" />
     <Content Include="Scripts\Vendors\nprogress\support\style.css" />
+    <Content Include="Scripts\Vendors\select2\dist\css\select2.css" />
+    <Content Include="Scripts\Vendors\select2\dist\css\select2.min.css" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ar.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\az.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\bg.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ca.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\cs.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\da.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\de.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\el.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\en.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\es.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\et.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\eu.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\fa.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\fi.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\fr.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\gl.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\he.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\hi.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\hr.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\hu.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\id.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\is.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\it.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ja.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\km.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ko.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\lt.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\lv.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\mk.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ms.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\nb.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\nl.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\pl.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\pt-BR.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\pt.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ro.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\ru.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\sk.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\sr-Cyrl.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\sr.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\sv.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\th.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\tr.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\uk.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\vi.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\zh-CN.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\i18n\zh-TW.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\select2.full.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\select2.full.min.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\select2.js" />
+    <Content Include="Scripts\Vendors\select2\dist\js\select2.min.js" />
+    <Content Include="Scripts\Vendors\starrr\dist\starrr.css" />
+    <Content Include="Scripts\Vendors\starrr\dist\starrr.js" />
+    <Content Include="Scripts\Vendors\switchery\dist\switchery.css" />
+    <Content Include="Scripts\Vendors\switchery\dist\switchery.js" />
+    <Content Include="Scripts\Vendors\switchery\dist\switchery.min.css" />
+    <Content Include="Scripts\Vendors\switchery\dist\switchery.min.js" />
+    <Content Include="Views\GestionPaciente\default.html" />
+    <Content Include="Views\GestionPaciente\form.html" />
+    <Content Include="Views\GestionPaciente\selectable.html" />
+    <Content Include="Views\GestionPaciente\timegrid-views.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\GestionPacienteController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Afiliacion.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Citas.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ciudad.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comuna.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DireccionMed.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Documentos.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Especialidad.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ficha.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Horario.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LinkPro_Models.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LinkPro_Models.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LinkPro_Models.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LinkPro_Models.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LinkPro_Models.edmx</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MedicoCLS.cs" />
     <Compile Include="Models\Medico_Especial.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Models_Entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models_Entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Models_Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Models_Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models_Entity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Paciente.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PacienteCLS.cs" />
     <Compile Include="Models\Pac_Med.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pagina.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RolPagina.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sexo.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursal.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>LinkPro_Models.tt</DependentUpon>
+      <DependentUpon>Models_Entity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\Models_Entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Models_Entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Models_Entity.edmx.diagram">
+      <DependentUpon>Models_Entity.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -348,6 +1111,27 @@
     <Content Include="Scripts\Vendors\animate.css\animate-config.json" />
     <Content Include="Scripts\Vendors\animate.css\bower.json" />
     <Content Include="Scripts\Vendors\animate.css\package.json" />
+    <Content Include="Views\GestionPaciente\Index.cshtml" />
+    <Content Include="Scripts\Vendors\iCheck\.bower.json" />
+    <Content Include="Scripts\Vendors\iCheck\bower.json" />
+    <Content Include="Scripts\Vendors\iCheck\icheck.jquery.json" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\.bower.json" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\bower.json" />
+    <Content Include="Scripts\Vendors\bootstrap-daterangepicker\package.json" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Views\GestionPaciente\Pacientes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -359,7 +1143,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -391,7 +1179,10 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

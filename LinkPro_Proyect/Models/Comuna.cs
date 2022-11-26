@@ -17,7 +17,7 @@ namespace LinkPro_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comuna()
         {
-            this.DireccionMed = new HashSet<DireccionMed>();
+            this.Sucursal = new HashSet<Sucursal>();
             this.Paciente = new HashSet<Paciente>();
         }
     
@@ -28,7 +28,7 @@ namespace LinkPro_Proyect.Models
     
         public virtual Ciudad Ciudad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DireccionMed> DireccionMed { get; set; }
+        public virtual ICollection<Sucursal> Sucursal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paciente> Paciente { get; set; }
     }

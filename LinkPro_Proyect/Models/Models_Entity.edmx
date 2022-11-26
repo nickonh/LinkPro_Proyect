@@ -1,0 +1,1942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LinkPro_Test_OldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afiliacion">
+          <Key>
+            <PropertyRef Name="AFILIACIONID" />
+          </Key>
+          <Property Name="AFILIACIONID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="CITASID" />
+          </Key>
+          <Property Name="CITASID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="int" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
+          <Property Name="ID_ESTADO" Type="int" />
+          <Property Name="CODE_RESERVAID" Type="int" />
+          <Property Name="FECHA_ATENCION" Type="datetime" />
+          <Property Name="START_ATENCION" Type="time" Precision="7" />
+          <Property Name="END_ATENCION" Type="time" Precision="7" />
+          <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
+          <Property Name="ID_HORARIO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="CIUDADID" />
+          </Key>
+          <Property Name="CIUDADID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_REGION" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="COMUNAID" />
+          </Key>
+          <Property Name="COMUNAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="ID_CIUDAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="DOCUMENTOID" />
+          </Key>
+          <Property Name="DOCUMENTOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_ARCHIVO" Type="varchar" MaxLength="100" />
+          <Property Name="CONTENIDO" Type="varbinary(max)" />
+          <Property Name="EXTENSION" Type="char" MaxLength="4" />
+          <Property Name="ID_MEDICO" Type="int" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="ESPECIALIDADID" />
+          </Key>
+          <Property Name="ESPECIALIDADID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="500" />
+          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="ESTADOID" />
+          </Key>
+          <Property Name="ESTADOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ficha">
+          <Key>
+            <PropertyRef Name="FICHAID" />
+          </Key>
+          <Property Name="FICHAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_AFILIACION" Type="int" />
+          <Property Name="ID_SEXO" Type="int" />
+          <Property Name="MASA" Type="float" />
+          <Property Name="ALTURA" Type="int" />
+          <Property Name="GRUPO_SANGRE" Type="varchar" MaxLength="20" />
+          <Property Name="ENFERMEDADES" Type="nvarchar" MaxLength="300" />
+          <Property Name="MEDICAMENTOS" Type="nvarchar" MaxLength="300" />
+          <Property Name="ALERGIAS" Type="nvarchar" MaxLength="200" />
+          <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="HORARIOID" />
+          </Key>
+          <Property Name="HORARIOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="int" Nullable="false" />
+          <Property Name="START_ATENTION" Type="time" Precision="7" />
+          <Property Name="END_ATENTION" Type="time" Precision="7" />
+          <Property Name="FECHA_ATENTION" Type="datetime" />
+          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="MEDICOID" />
+          </Key>
+          <Property Name="MEDICOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="ID_SUCURSAL" Type="int" />
+          <Property Name="ID_ESTADO" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="9" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="ID_MEDICOESPECIAL" Type="int" />
+        </EntityType>
+        <EntityType Name="Medico_Especial">
+          <Key>
+            <PropertyRef Name="MEDESPECIALIDADID" />
+          </Key>
+          <Property Name="MEDESPECIALIDADID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ESPECIALIDAD" Type="int" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="int" />
+          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Pac_Med">
+          <Key>
+            <PropertyRef Name="PACMEDID" />
+          </Key>
+          <Property Name="PACMEDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="int" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="PACIENTEID" />
+          </Key>
+          <Property Name="PACIENTEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROLP" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_FICHA" Type="int" />
+          <Property Name="ID_COMUNA" Type="int" />
+          <Property Name="ID_SEXO" Type="int" />
+          <Property Name="ID_ESTADO" Type="int" />
+          <Property Name="ID_DOCUMENTO" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="50" />
+          <Property Name="RUT" Type="varchar" MaxLength="15" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="9" />
+          <Property Name="FECHA_NACIMIENTO" Type="datetime" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_INSCRITO" Type="datetime" />
+          <Property Name="BHABILITADO" Type="int" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="int" />
+          <Property Name="ID_REGION" Type="int" />
+        </EntityType>
+        <EntityType Name="Pagina">
+          <Key>
+            <PropertyRef Name="PAGINAID" />
+          </Key>
+          <Property Name="PAGINAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTROLADOR" Type="varchar" MaxLength="100" />
+          <Property Name="ACCION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="REGIONID" />
+          </Key>
+          <Property Name="REGIONID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="70" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ROLID" />
+          </Key>
+          <Property Name="ROLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="RolPagina">
+          <Key>
+            <PropertyRef Name="ROLPAGINAID" />
+          </Key>
+          <Property Name="ROLPAGINAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROLPA" Type="int" />
+          <Property Name="ID_PAGINA" Type="int" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="SEXOID" />
+          </Key>
+          <Property Name="SEXOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="SUCURSALID" />
+          </Key>
+          <Property Name="SUCURSALID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_SUCURSAL" Type="varchar" MaxLength="100" />
+          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="25" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="ID_COMUNA" Type="int" />
+          <Property Name="ID_REGION" Type="int" />
+          <Property Name="ID_CIUDAD" Type="int" />
+          <Property Name="ID_MEDICO" Type="int" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="USUARIOID" />
+          </Key>
+          <Property Name="USUARIOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="SECRETPASS" Type="varchar" MaxLength="32" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <Association Name="FK_AFILIACION">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="0..1" />
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="AFILIACIONID" />
+            </Principal>
+            <Dependent Role="Ficha">
+              <PropertyRef Name="ID_AFILIACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIUDAD">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CIUDADID" />
+            </Principal>
+            <Dependent Role="Comuna">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIUDAD_SU">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CIUDADID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNA_SU">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="COMUNAID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNAP">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="COMUNAID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO">
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DOCUMENTOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESPECIALIDAD">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="ESPECIALIDADID" />
+            </Principal>
+            <Dependent Role="Medico_Especial">
+              <PropertyRef Name="ID_ESPECIALIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADO">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADOC">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADOP">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHA">
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ficha">
+              <PropertyRef Name="FICHAID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_FICHA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="HORARIOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_HORARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO_PM">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Pac_Med" Type="Self.Pac_Med" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Pac_Med">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO_SU">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOC">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICODOC">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Documentos">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOE">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Medico_Especial">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOESPECIAL">
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico_Especial">
+              <PropertyRef Name="MEDESPECIALIDADID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_MEDICOESPECIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE_PM">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Pac_Med" Type="Self.Pac_Med" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Pac_Med">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTEDOC">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Documentos">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAGINA">
+          <End Role="Pagina" Type="Self.Pagina" Multiplicity="0..1" />
+          <End Role="RolPagina" Type="Self.RolPagina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagina">
+              <PropertyRef Name="PAGINAID" />
+            </Principal>
+            <Dependent Role="RolPagina">
+              <PropertyRef Name="ID_PAGINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGION_C">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="REGIONID" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGION_SU">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="REGIONID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROL">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLP">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_ROLP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLPG">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolPagina" Type="Self.RolPagina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="RolPagina">
+              <PropertyRef Name="ID_ROLPA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEXO">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SEXOID" />
+            </Principal>
+            <Dependent Role="Ficha">
+              <PropertyRef Name="ID_SEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEXOP">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SEXOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_SEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUCURSAL">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SUCURSALID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USUARIOID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOP">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USUARIOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LinkPro_Test_OldModelStoreContainer">
+          <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ficha" EntityType="Self.Ficha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pac_Med" EntityType="Self.Pac_Med" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagina" EntityType="Self.Pagina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolPagina" EntityType="Self.RolPagina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AFILIACION" Association="Self.FK_AFILIACION">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Ficha" EntitySet="Ficha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIUDAD" Association="Self.FK_CIUDAD">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Comuna" EntitySet="Comuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIUDAD_SU" Association="Self.FK_CIUDAD_SU">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNA_SU" Association="Self.FK_COMUNA_SU">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNAP" Association="Self.FK_COMUNAP">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO" Association="Self.FK_DOCUMENTO">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESPECIALIDAD" Association="Self.FK_ESPECIALIDAD">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADO" Association="Self.FK_ESTADO">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADOC" Association="Self.FK_ESTADOC">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADOP" Association="Self.FK_ESTADOP">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHA" Association="Self.FK_FICHA">
+            <End Role="Ficha" EntitySet="Ficha" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO" Association="Self.FK_HORARIO">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO" Association="Self.FK_MEDICO">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO_PM" Association="Self.FK_MEDICO_PM">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Pac_Med" EntitySet="Pac_Med" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO_SU" Association="Self.FK_MEDICO_SU">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOC" Association="Self.FK_MEDICOC">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICODOC" Association="Self.FK_MEDICODOC">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Documentos" EntitySet="Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOE" Association="Self.FK_MEDICOE">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOESPECIAL" Association="Self.FK_MEDICOESPECIAL">
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE" Association="Self.FK_PACIENTE">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE_PM" Association="Self.FK_PACIENTE_PM">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Pac_Med" EntitySet="Pac_Med" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTEDOC" Association="Self.FK_PACIENTEDOC">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Documentos" EntitySet="Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAGINA" Association="Self.FK_PAGINA">
+            <End Role="Pagina" EntitySet="Pagina" />
+            <End Role="RolPagina" EntitySet="RolPagina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGION_C" Association="Self.FK_REGION_C">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGION_SU" Association="Self.FK_REGION_SU">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROL" Association="Self.FK_ROL">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLP" Association="Self.FK_ROLP">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLPG" Association="Self.FK_ROLPG">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolPagina" EntitySet="RolPagina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEXO" Association="Self.FK_SEXO">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Ficha" EntitySet="Ficha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEXOP" Association="Self.FK_SEXOP">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUCURSAL" Association="Self.FK_SUCURSAL">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO" Association="Self.FK_USUARIO">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOP" Association="Self.FK_USUARIOP">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LinkPro_Test_OldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Afiliacion">
+          <Key>
+            <PropertyRef Name="AFILIACIONID" />
+          </Key>
+          <Property Name="AFILIACIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Ficha" Relationship="Self.FK_AFILIACION" FromRole="Afiliacion" ToRole="Ficha" />
+        </EntityType>
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="CITASID" />
+          </Key>
+          <Property Name="CITASID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
+          <Property Name="ID_ESTADO" Type="Int32" />
+          <Property Name="CODE_RESERVAID" Type="Int32" />
+          <Property Name="FECHA_ATENCION" Type="DateTime" Precision="3" />
+          <Property Name="START_ATENCION" Type="Time" Precision="7" />
+          <Property Name="END_ATENCION" Type="Time" Precision="7" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ID_HORARIO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOC" FromRole="Citas" ToRole="Estado" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK_HORARIO" FromRole="Citas" ToRole="Horario" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICOC" FromRole="Citas" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_PACIENTE" FromRole="Citas" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="CIUDADID" />
+          </Key>
+          <Property Name="CIUDADID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_CIUDAD" FromRole="Ciudad" ToRole="Comuna" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_CIUDAD_SU" FromRole="Ciudad" ToRole="Sucursal" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_REGION_C" FromRole="Ciudad" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="COMUNAID" />
+          </Key>
+          <Property Name="COMUNAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_CIUDAD" FromRole="Comuna" ToRole="Ciudad" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_COMUNA_SU" FromRole="Comuna" ToRole="Sucursal" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_COMUNAP" FromRole="Comuna" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="DOCUMENTOID" />
+          </Key>
+          <Property Name="DOCUMENTOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_ARCHIVO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENIDO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EXTENSION" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_DOCUMENTO" FromRole="Documentos" ToRole="Paciente" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICODOC" FromRole="Documentos" ToRole="Medico" />
+          <NavigationProperty Name="Paciente1" Relationship="Self.FK_PACIENTEDOC" FromRole="Documentos" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="ESPECIALIDADID" />
+          </Key>
+          <Property Name="ESPECIALIDADID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Medico_Especial" Relationship="Self.FK_ESPECIALIDAD" FromRole="Especialidad" ToRole="Medico_Especial" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="ESTADOID" />
+          </Key>
+          <Property Name="ESTADOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_ESTADOC" FromRole="Estado" ToRole="Citas" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_ESTADO" FromRole="Estado" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_ESTADOP" FromRole="Estado" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Ficha">
+          <Key>
+            <PropertyRef Name="FICHAID" />
+          </Key>
+          <Property Name="FICHAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_AFILIACION" Type="Int32" />
+          <Property Name="ID_SEXO" Type="Int32" />
+          <Property Name="MASA" Type="Double" />
+          <Property Name="ALTURA" Type="Int32" />
+          <Property Name="GRUPO_SANGRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ENFERMEDADES" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MEDICAMENTOS" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ALERGIAS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Afiliacion" Relationship="Self.FK_AFILIACION" FromRole="Ficha" ToRole="Afiliacion" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_FICHA" FromRole="Ficha" ToRole="Paciente" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_SEXO" FromRole="Ficha" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="HORARIOID" />
+          </Key>
+          <Property Name="HORARIOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
+          <Property Name="START_ATENTION" Type="Time" Precision="7" />
+          <Property Name="END_ATENTION" Type="Time" Precision="7" />
+          <Property Name="FECHA_ATENTION" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_HORARIO" FromRole="Horario" ToRole="Citas" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO" FromRole="Horario" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="MEDICOID" />
+          </Key>
+          <Property Name="MEDICOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="ID_SUCURSAL" Type="Int32" />
+          <Property Name="ID_ESTADO" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="ID_MEDICOESPECIAL" Type="Int32" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_MEDICOC" FromRole="Medico" ToRole="Citas" />
+          <NavigationProperty Name="Documentos" Relationship="Self.FK_MEDICODOC" FromRole="Medico" ToRole="Documentos" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADO" FromRole="Medico" ToRole="Estado" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK_MEDICO" FromRole="Medico" ToRole="Horario" />
+          <NavigationProperty Name="Pac_Med" Relationship="Self.FK_MEDICO_PM" FromRole="Medico" ToRole="Pac_Med" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_MEDICO_SU" FromRole="Medico" ToRole="Sucursal" />
+          <NavigationProperty Name="Medico_Especial" Relationship="Self.FK_MEDICOE" FromRole="Medico" ToRole="Medico_Especial" />
+          <NavigationProperty Name="Medico_Especial1" Relationship="Self.FK_MEDICOESPECIAL" FromRole="Medico" ToRole="Medico_Especial" />
+          <NavigationProperty Name="Sucursal1" Relationship="Self.FK_SUCURSAL" FromRole="Medico" ToRole="Sucursal" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_USUARIO" FromRole="Medico" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Medico_Especial">
+          <Key>
+            <PropertyRef Name="MEDESPECIALIDADID" />
+          </Key>
+          <Property Name="MEDESPECIALIDADID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ESPECIALIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ID_MEDICO" Type="Int32" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK_ESPECIALIDAD" FromRole="Medico_Especial" ToRole="Especialidad" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICOE" FromRole="Medico_Especial" ToRole="Medico" />
+          <NavigationProperty Name="Medico1" Relationship="Self.FK_MEDICOESPECIAL" FromRole="Medico_Especial" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Pac_Med">
+          <Key>
+            <PropertyRef Name="PACMEDID" />
+          </Key>
+          <Property Name="PACMEDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO_PM" FromRole="Pac_Med" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_PACIENTE_PM" FromRole="Pac_Med" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="PACIENTEID" />
+          </Key>
+          <Property Name="PACIENTEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROLP" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_FICHA" Type="Int32" />
+          <Property Name="ID_COMUNA" Type="Int32" />
+          <Property Name="ID_SEXO" Type="Int32" />
+          <Property Name="ID_ESTADO" Type="Int32" />
+          <Property Name="ID_DOCUMENTO" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RUT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Precision="3" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INSCRITO" Type="DateTime" Precision="3" />
+          <Property Name="BHABILITADO" Type="Int32" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="Int32" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_PACIENTE" FromRole="Paciente" ToRole="Citas" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_COMUNAP" FromRole="Paciente" ToRole="Comuna" />
+          <NavigationProperty Name="Documentos" Relationship="Self.FK_DOCUMENTO" FromRole="Paciente" ToRole="Documentos" />
+          <NavigationProperty Name="Documentos1" Relationship="Self.FK_PACIENTEDOC" FromRole="Paciente" ToRole="Documentos" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOP" FromRole="Paciente" ToRole="Estado" />
+          <NavigationProperty Name="Ficha" Relationship="Self.FK_FICHA" FromRole="Paciente" ToRole="Ficha" />
+          <NavigationProperty Name="Pac_Med" Relationship="Self.FK_PACIENTE_PM" FromRole="Paciente" ToRole="Pac_Med" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_ROLP" FromRole="Paciente" ToRole="Rol" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_SEXOP" FromRole="Paciente" ToRole="Sexo" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_USUARIOP" FromRole="Paciente" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Pagina">
+          <Key>
+            <PropertyRef Name="PAGINAID" />
+          </Key>
+          <Property Name="PAGINAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTROLADOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RolPagina" Relationship="Self.FK_PAGINA" FromRole="Pagina" ToRole="RolPagina" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="REGIONID" />
+          </Key>
+          <Property Name="REGIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_REGION_C" FromRole="Region" ToRole="Ciudad" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_REGION_SU" FromRole="Region" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ROLID" />
+          </Key>
+          <Property Name="ROLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_ROLP" FromRole="Rol" ToRole="Paciente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_ROL" FromRole="Rol" ToRole="Usuario" />
+          <NavigationProperty Name="RolPagina" Relationship="Self.FK_ROLPG" FromRole="Rol" ToRole="RolPagina" />
+        </EntityType>
+        <EntityType Name="RolPagina">
+          <Key>
+            <PropertyRef Name="ROLPAGINAID" />
+          </Key>
+          <Property Name="ROLPAGINAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROLPA" Type="Int32" />
+          <Property Name="ID_PAGINA" Type="Int32" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Pagina" Relationship="Self.FK_PAGINA" FromRole="RolPagina" ToRole="Pagina" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_ROLPG" FromRole="RolPagina" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="SEXOID" />
+          </Key>
+          <Property Name="SEXOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Ficha" Relationship="Self.FK_SEXO" FromRole="Sexo" ToRole="Ficha" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_SEXOP" FromRole="Sexo" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="SUCURSALID" />
+          </Key>
+          <Property Name="SUCURSALID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_SUCURSAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="ID_COMUNA" Type="Int32" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <Property Name="ID_CIUDAD" Type="Int32" />
+          <Property Name="ID_MEDICO" Type="Int32" />
+          <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_CIUDAD_SU" FromRole="Sucursal" ToRole="Ciudad" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_COMUNA_SU" FromRole="Sucursal" ToRole="Comuna" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO_SU" FromRole="Sucursal" ToRole="Medico" />
+          <NavigationProperty Name="Medico1" Relationship="Self.FK_SUCURSAL" FromRole="Sucursal" ToRole="Medico" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_REGION_SU" FromRole="Sucursal" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="USUARIOID" />
+          </Key>
+          <Property Name="USUARIOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SECRETPASS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_USUARIO" FromRole="Usuario" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_USUARIOP" FromRole="Usuario" ToRole="Paciente" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_ROL" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_AFILIACION">
+          <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="0..1" />
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliacion">
+              <PropertyRef Name="AFILIACIONID" />
+            </Principal>
+            <Dependent Role="Ficha">
+              <PropertyRef Name="ID_AFILIACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADOC">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HORARIO">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="HORARIOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_HORARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOC">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIUDAD">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CIUDADID" />
+            </Principal>
+            <Dependent Role="Comuna">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIUDAD_SU">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="CIUDADID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGION_C">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="REGIONID" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNA_SU">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="COMUNAID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNAP">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="COMUNAID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCUMENTO">
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentos">
+              <PropertyRef Name="DOCUMENTOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICODOC">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Documentos">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTEDOC">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Documentos">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESPECIALIDAD">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="ESPECIALIDADID" />
+            </Principal>
+            <Dependent Role="Medico_Especial">
+              <PropertyRef Name="ID_ESPECIALIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADO">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADOP">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="ESTADOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHA">
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ficha">
+              <PropertyRef Name="FICHAID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_FICHA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEXO">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Ficha" Type="Self.Ficha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SEXOID" />
+            </Principal>
+            <Dependent Role="Ficha">
+              <PropertyRef Name="ID_SEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO_PM">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Pac_Med" Type="Self.Pac_Med" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Pac_Med">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICO_SU">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOE">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="MEDICOID" />
+            </Principal>
+            <Dependent Role="Medico_Especial">
+              <PropertyRef Name="ID_MEDICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICOESPECIAL">
+          <End Role="Medico_Especial" Type="Self.Medico_Especial" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico_Especial">
+              <PropertyRef Name="MEDESPECIALIDADID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_MEDICOESPECIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUCURSAL">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SUCURSALID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USUARIOID" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE_PM">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Pac_Med" Type="Self.Pac_Med" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PACIENTEID" />
+            </Principal>
+            <Dependent Role="Pac_Med">
+              <PropertyRef Name="ID_PACIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLP">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_ROLP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEXOP">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SEXOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_SEXO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOP">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="USUARIOID" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAGINA">
+          <End Role="Pagina" Type="Self.Pagina" Multiplicity="0..1" />
+          <End Role="RolPagina" Type="Self.RolPagina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagina">
+              <PropertyRef Name="PAGINAID" />
+            </Principal>
+            <Dependent Role="RolPagina">
+              <PropertyRef Name="ID_PAGINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGION_SU">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="REGIONID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROL">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLPG">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolPagina" Type="Self.RolPagina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ROLID" />
+            </Principal>
+            <Dependent Role="RolPagina">
+              <PropertyRef Name="ID_ROLPA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LinkPro_Test_Old_Entidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" />
+          <EntitySet Name="Citas" EntityType="Self.Citas" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" />
+          <EntitySet Name="Documentos" EntityType="Self.Documentos" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Ficha" EntityType="Self.Ficha" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" />
+          <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" />
+          <EntitySet Name="Pac_Med" EntityType="Self.Pac_Med" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="Pagina" EntityType="Self.Pagina" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="RolPagina" EntityType="Self.RolPagina" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_AFILIACION" Association="Self.FK_AFILIACION">
+            <End Role="Afiliacion" EntitySet="Afiliacion" />
+            <End Role="Ficha" EntitySet="Ficha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADOC" Association="Self.FK_ESTADOC">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORARIO" Association="Self.FK_HORARIO">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOC" Association="Self.FK_MEDICOC">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE" Association="Self.FK_PACIENTE">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIUDAD" Association="Self.FK_CIUDAD">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Comuna" EntitySet="Comuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIUDAD_SU" Association="Self.FK_CIUDAD_SU">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGION_C" Association="Self.FK_REGION_C">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNA_SU" Association="Self.FK_COMUNA_SU">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNAP" Association="Self.FK_COMUNAP">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCUMENTO" Association="Self.FK_DOCUMENTO">
+            <End Role="Documentos" EntitySet="Documentos" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICODOC" Association="Self.FK_MEDICODOC">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Documentos" EntitySet="Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTEDOC" Association="Self.FK_PACIENTEDOC">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Documentos" EntitySet="Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESPECIALIDAD" Association="Self.FK_ESPECIALIDAD">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADO" Association="Self.FK_ESTADO">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTADOP" Association="Self.FK_ESTADOP">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHA" Association="Self.FK_FICHA">
+            <End Role="Ficha" EntitySet="Ficha" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEXO" Association="Self.FK_SEXO">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Ficha" EntitySet="Ficha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO" Association="Self.FK_MEDICO">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO_PM" Association="Self.FK_MEDICO_PM">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Pac_Med" EntitySet="Pac_Med" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICO_SU" Association="Self.FK_MEDICO_SU">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOE" Association="Self.FK_MEDICOE">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICOESPECIAL" Association="Self.FK_MEDICOESPECIAL">
+            <End Role="Medico_Especial" EntitySet="Medico_Especial" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUCURSAL" Association="Self.FK_SUCURSAL">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO" Association="Self.FK_USUARIO">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE_PM" Association="Self.FK_PACIENTE_PM">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Pac_Med" EntitySet="Pac_Med" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLP" Association="Self.FK_ROLP">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEXOP" Association="Self.FK_SEXOP">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOP" Association="Self.FK_USUARIOP">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAGINA" Association="Self.FK_PAGINA">
+            <End Role="Pagina" EntitySet="Pagina" />
+            <End Role="RolPagina" EntitySet="RolPagina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGION_SU" Association="Self.FK_REGION_SU">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROL" Association="Self.FK_ROL">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLPG" Association="Self.FK_ROLPG">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolPagina" EntitySet="RolPagina" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LinkPro_Test_OldModelStoreContainer" CdmEntityContainer="LinkPro_Test_Old_Entidades">
+          <EntitySetMapping Name="Afiliacion">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Afiliacion">
+              <MappingFragment StoreEntitySet="Afiliacion">
+                <ScalarProperty Name="AFILIACIONID" ColumnName="AFILIACIONID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citas">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Citas">
+              <MappingFragment StoreEntitySet="Citas">
+                <ScalarProperty Name="CITASID" ColumnName="CITASID" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+                <ScalarProperty Name="CODE_RESERVAID" ColumnName="CODE_RESERVAID" />
+                <ScalarProperty Name="FECHA_ATENCION" ColumnName="FECHA_ATENCION" />
+                <ScalarProperty Name="START_ATENCION" ColumnName="START_ATENCION" />
+                <ScalarProperty Name="END_ATENCION" ColumnName="END_ATENCION" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="CIUDADID" ColumnName="CIUDADID" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comuna">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Comuna">
+              <MappingFragment StoreEntitySet="Comuna">
+                <ScalarProperty Name="COMUNAID" ColumnName="COMUNAID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documentos">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Documentos">
+              <MappingFragment StoreEntitySet="Documentos">
+                <ScalarProperty Name="DOCUMENTOID" ColumnName="DOCUMENTOID" />
+                <ScalarProperty Name="NOMBRE_ARCHIVO" ColumnName="NOMBRE_ARCHIVO" />
+                <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+                <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidad">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Especialidad">
+              <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="ESPECIALIDADID" ColumnName="ESPECIALIDADID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="ESTADOID" ColumnName="ESTADOID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ficha">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Ficha">
+              <MappingFragment StoreEntitySet="Ficha">
+                <ScalarProperty Name="FICHAID" ColumnName="FICHAID" />
+                <ScalarProperty Name="ID_AFILIACION" ColumnName="ID_AFILIACION" />
+                <ScalarProperty Name="ID_SEXO" ColumnName="ID_SEXO" />
+                <ScalarProperty Name="MASA" ColumnName="MASA" />
+                <ScalarProperty Name="ALTURA" ColumnName="ALTURA" />
+                <ScalarProperty Name="GRUPO_SANGRE" ColumnName="GRUPO_SANGRE" />
+                <ScalarProperty Name="ENFERMEDADES" ColumnName="ENFERMEDADES" />
+                <ScalarProperty Name="MEDICAMENTOS" ColumnName="MEDICAMENTOS" />
+                <ScalarProperty Name="ALERGIAS" ColumnName="ALERGIAS" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horario">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Horario">
+              <MappingFragment StoreEntitySet="Horario">
+                <ScalarProperty Name="HORARIOID" ColumnName="HORARIOID" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="START_ATENTION" ColumnName="START_ATENTION" />
+                <ScalarProperty Name="END_ATENTION" ColumnName="END_ATENTION" />
+                <ScalarProperty Name="FECHA_ATENTION" ColumnName="FECHA_ATENTION" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medico">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="MEDICOID" ColumnName="MEDICOID" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="ID_MEDICOESPECIAL" ColumnName="ID_MEDICOESPECIAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medico_Especial">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Medico_Especial">
+              <MappingFragment StoreEntitySet="Medico_Especial">
+                <ScalarProperty Name="MEDESPECIALIDADID" ColumnName="MEDESPECIALIDADID" />
+                <ScalarProperty Name="ID_ESPECIALIDAD" ColumnName="ID_ESPECIALIDAD" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pac_Med">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Pac_Med">
+              <MappingFragment StoreEntitySet="Pac_Med">
+                <ScalarProperty Name="PACMEDID" ColumnName="PACMEDID" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="PACIENTEID" ColumnName="PACIENTEID" />
+                <ScalarProperty Name="ID_ROLP" ColumnName="ID_ROLP" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_FICHA" ColumnName="ID_FICHA" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="ID_SEXO" ColumnName="ID_SEXO" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECHA_INSCRITO" ColumnName="FECHA_INSCRITO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagina">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Pagina">
+              <MappingFragment StoreEntitySet="Pagina">
+                <ScalarProperty Name="PAGINAID" ColumnName="PAGINAID" />
+                <ScalarProperty Name="CONTROLADOR" ColumnName="CONTROLADOR" />
+                <ScalarProperty Name="ACCION" ColumnName="ACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="REGIONID" ColumnName="REGIONID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolPagina">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.RolPagina">
+              <MappingFragment StoreEntitySet="RolPagina">
+                <ScalarProperty Name="ROLPAGINAID" ColumnName="ROLPAGINAID" />
+                <ScalarProperty Name="ID_ROLPA" ColumnName="ID_ROLPA" />
+                <ScalarProperty Name="ID_PAGINA" ColumnName="ID_PAGINA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexo">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="SEXOID" ColumnName="SEXOID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="NOMBRE_SUCURSAL" ColumnName="NOMBRE_SUCURSAL" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="USUARIOID" ColumnName="USUARIOID" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SECRETPASS" ColumnName="SECRETPASS" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

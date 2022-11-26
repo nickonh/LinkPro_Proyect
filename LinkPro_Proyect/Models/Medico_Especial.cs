@@ -14,14 +14,22 @@ namespace LinkPro_Proyect.Models
     
     public partial class Medico_Especial
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Medico_Especial()
+        {
+            this.Medico1 = new HashSet<Medico>();
+        }
+    
         public int MEDESPECIALIDADID { get; set; }
         public int ID_ESPECIALIDAD { get; set; }
-        public int ID_MEDICO { get; set; }
+        public Nullable<int> ID_MEDICO { get; set; }
         public Nullable<System.DateTime> FECHA_REGISTRO { get; set; }
         public string USUARIO_REGISTRO { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
     
         public virtual Especialidad Especialidad { get; set; }
         public virtual Medico Medico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Medico> Medico1 { get; set; }
     }
 }
