@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LinkPro_Test_OldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LinkPro_Test_OldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afiliacion">
           <Key>
             <PropertyRef Name="AFILIACIONID" />
@@ -22,9 +22,8 @@
           <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
           <Property Name="ID_ESTADO" Type="int" />
           <Property Name="CODE_RESERVAID" Type="int" />
-          <Property Name="FECHA_ATENCION" Type="datetime" />
-          <Property Name="START_ATENCION" Type="time" Precision="7" />
-          <Property Name="END_ATENCION" Type="time" Precision="7" />
+          <Property Name="FECHA_ATENCION" Type="date" />
+          <Property Name="START_ATENCION" Type="varchar" MaxLength="5" />
           <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
           <Property Name="ID_HORARIO" Type="int" Nullable="false" />
         </EntityType>
@@ -90,18 +89,24 @@
           <Property Name="ALERGIAS" Type="nvarchar" MaxLength="200" />
           <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Hora">
+          <Key>
+            <PropertyRef Name="HORAID" />
+          </Key>
+          <Property Name="HORAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HORA" Type="varchar" MaxLength="5" />
+        </EntityType>
         <EntityType Name="Horario">
           <Key>
             <PropertyRef Name="HORARIOID" />
           </Key>
           <Property Name="HORARIOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_MEDICO" Type="int" Nullable="false" />
-          <Property Name="START_ATENTION" Type="time" Precision="7" />
-          <Property Name="END_ATENTION" Type="time" Precision="7" />
-          <Property Name="FECHA_ATENTION" Type="datetime" />
-          <Property Name="FECHA_REGISTRO" Type="datetime" />
+          <Property Name="FECHA_ATENTION" Type="date" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
           <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
           <Property Name="BHABILITADO" Type="int" />
+          <Property Name="ID_HORA" Type="int" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -145,7 +150,6 @@
             <PropertyRef Name="PACIENTEID" />
           </Key>
           <Property Name="PACIENTEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_ROLP" Type="int" Nullable="false" />
           <Property Name="ID_USUARIO" Type="int" Nullable="false" />
           <Property Name="ID_FICHA" Type="int" />
           <Property Name="ID_COMUNA" Type="int" />
@@ -157,9 +161,9 @@
           <Property Name="RUT" Type="varchar" MaxLength="15" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="50" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="9" />
-          <Property Name="FECHA_NACIMIENTO" Type="datetime" />
+          <Property Name="FECHA_NACIMIENTO" Type="date" />
           <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FECHA_INSCRITO" Type="datetime" />
+          <Property Name="FECHA_INSCRITO" Type="date" />
           <Property Name="BHABILITADO" Type="int" Nullable="false" />
           <Property Name="ID_CIUDAD" Type="int" />
           <Property Name="ID_REGION" Type="int" />
@@ -374,6 +378,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HORA">
+          <End Role="Hora" Type="Self.Hora" Multiplicity="0..1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hora">
+              <PropertyRef Name="HORAID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_HORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HORARIO">
           <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
           <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
@@ -554,18 +570,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ROLP">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="ROLID" />
-            </Principal>
-            <Dependent Role="Paciente">
-              <PropertyRef Name="ID_ROLP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ROLPG">
           <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
           <End Role="RolPagina" Type="Self.RolPagina" Multiplicity="*" />
@@ -647,6 +651,7 @@
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ficha" EntityType="Self.Ficha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hora" EntityType="Self.Hora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" Schema="dbo" store:Type="Tables" />
@@ -703,6 +708,10 @@
           <AssociationSet Name="FK_FICHA" Association="Self.FK_FICHA">
             <End Role="Ficha" EntitySet="Ficha" />
             <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HORA" Association="Self.FK_HORA">
+            <End Role="Hora" EntitySet="Hora" />
+            <End Role="Horario" EntitySet="Horario" />
           </AssociationSet>
           <AssociationSet Name="FK_HORARIO" Association="Self.FK_HORARIO">
             <End Role="Horario" EntitySet="Horario" />
@@ -764,10 +773,6 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK_ROLP" Association="Self.FK_ROLP">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="Paciente" EntitySet="Paciente" />
-          </AssociationSet>
           <AssociationSet Name="FK_ROLPG" Association="Self.FK_ROLPG">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="RolPagina" EntitySet="RolPagina" />
@@ -793,8 +798,7 @@
             <End Role="Paciente" EntitySet="Paciente" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LinkPro_Test_OldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -816,9 +820,8 @@
           <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
           <Property Name="ID_ESTADO" Type="Int32" />
           <Property Name="CODE_RESERVAID" Type="Int32" />
-          <Property Name="FECHA_ATENCION" Type="DateTime" Precision="3" />
-          <Property Name="START_ATENCION" Type="Time" Precision="7" />
-          <Property Name="END_ATENCION" Type="Time" Precision="7" />
+          <Property Name="FECHA_ATENCION" Type="DateTime" Precision="0" />
+          <Property Name="START_ATENCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ID_HORARIO" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOC" FromRole="Citas" ToRole="Estado" />
@@ -904,19 +907,27 @@
           <NavigationProperty Name="Paciente" Relationship="Self.FK_FICHA" FromRole="Ficha" ToRole="Paciente" />
           <NavigationProperty Name="Sexo" Relationship="Self.FK_SEXO" FromRole="Ficha" ToRole="Sexo" />
         </EntityType>
+        <EntityType Name="Hora">
+          <Key>
+            <PropertyRef Name="HORAID" />
+          </Key>
+          <Property Name="HORAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HORA1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK_HORA" FromRole="Hora" ToRole="Horario" />
+        </EntityType>
         <EntityType Name="Horario">
           <Key>
             <PropertyRef Name="HORARIOID" />
           </Key>
           <Property Name="HORARIOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
-          <Property Name="START_ATENTION" Type="Time" Precision="7" />
-          <Property Name="END_ATENTION" Type="Time" Precision="7" />
-          <Property Name="FECHA_ATENTION" Type="DateTime" Precision="3" />
-          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_ATENTION" Type="DateTime" Precision="0" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
           <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="ID_HORA" Type="Int32" />
           <NavigationProperty Name="Citas" Relationship="Self.FK_HORARIO" FromRole="Horario" ToRole="Citas" />
+          <NavigationProperty Name="Hora" Relationship="Self.FK_HORA" FromRole="Horario" ToRole="Hora" />
           <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO" FromRole="Horario" ToRole="Medico" />
         </EntityType>
         <EntityType Name="Medico">
@@ -976,7 +987,6 @@
             <PropertyRef Name="PACIENTEID" />
           </Key>
           <Property Name="PACIENTEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_ROLP" Type="Int32" Nullable="false" />
           <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
           <Property Name="ID_FICHA" Type="Int32" />
           <Property Name="ID_COMUNA" Type="Int32" />
@@ -988,9 +998,9 @@
           <Property Name="RUT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Precision="0" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FECHA_INSCRITO" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_INSCRITO" Type="DateTime" Precision="0" />
           <Property Name="BHABILITADO" Type="Int32" Nullable="false" />
           <Property Name="ID_CIUDAD" Type="Int32" />
           <Property Name="ID_REGION" Type="Int32" />
@@ -1001,7 +1011,6 @@
           <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOP" FromRole="Paciente" ToRole="Estado" />
           <NavigationProperty Name="Ficha" Relationship="Self.FK_FICHA" FromRole="Paciente" ToRole="Ficha" />
           <NavigationProperty Name="Pac_Med" Relationship="Self.FK_PACIENTE_PM" FromRole="Paciente" ToRole="Pac_Med" />
-          <NavigationProperty Name="Rol" Relationship="Self.FK_ROLP" FromRole="Paciente" ToRole="Rol" />
           <NavigationProperty Name="Sexo" Relationship="Self.FK_SEXOP" FromRole="Paciente" ToRole="Sexo" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_USUARIOP" FromRole="Paciente" ToRole="Usuario" />
         </EntityType>
@@ -1032,7 +1041,6 @@
           <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BHABILITADO" Type="Int32" />
-          <NavigationProperty Name="Paciente" Relationship="Self.FK_ROLP" FromRole="Rol" ToRole="Paciente" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_ROL" FromRole="Rol" ToRole="Usuario" />
           <NavigationProperty Name="RolPagina" Relationship="Self.FK_ROLPG" FromRole="Rol" ToRole="RolPagina" />
         </EntityType>
@@ -1317,6 +1325,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HORA">
+          <End Role="Hora" Type="Self.Hora" Multiplicity="0..1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hora">
+              <PropertyRef Name="HORAID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_HORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MEDICO">
           <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
           <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
@@ -1413,18 +1433,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ROLP">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="ROLID" />
-            </Principal>
-            <Dependent Role="Paciente">
-              <PropertyRef Name="ID_ROLP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SEXOP">
           <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
@@ -1497,7 +1505,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LinkPro_Test_Old_Entidades" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LinkPro_Test_Old_Update" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" />
           <EntitySet Name="Citas" EntityType="Self.Citas" />
           <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
@@ -1506,6 +1514,7 @@
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Ficha" EntityType="Self.Ficha" />
+          <EntitySet Name="Hora" EntityType="Self.Hora" />
           <EntitySet Name="Horario" EntityType="Self.Horario" />
           <EntitySet Name="Medico" EntityType="Self.Medico" />
           <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" />
@@ -1591,6 +1600,10 @@
             <End Role="Sexo" EntitySet="Sexo" />
             <End Role="Ficha" EntitySet="Ficha" />
           </AssociationSet>
+          <AssociationSet Name="FK_HORA" Association="Self.FK_HORA">
+            <End Role="Hora" EntitySet="Hora" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
           <AssociationSet Name="FK_MEDICO" Association="Self.FK_MEDICO">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Horario" EntitySet="Horario" />
@@ -1623,10 +1636,6 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="Pac_Med" EntitySet="Pac_Med" />
           </AssociationSet>
-          <AssociationSet Name="FK_ROLP" Association="Self.FK_ROLP">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="Paciente" EntitySet="Paciente" />
-          </AssociationSet>
           <AssociationSet Name="FK_SEXOP" Association="Self.FK_SEXOP">
             <End Role="Sexo" EntitySet="Sexo" />
             <End Role="Paciente" EntitySet="Paciente" />
@@ -1657,7 +1666,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LinkPro_Test_OldModelStoreContainer" CdmEntityContainer="LinkPro_Test_Old_Entidades">
+        <EntityContainerMapping StorageEntityContainer="LinkPro_Test_OldModelStoreContainer" CdmEntityContainer="LinkPro_Test_Old_Update">
           <EntitySetMapping Name="Afiliacion">
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Afiliacion">
               <MappingFragment StoreEntitySet="Afiliacion">
@@ -1677,7 +1686,6 @@
                 <ScalarProperty Name="CODE_RESERVAID" ColumnName="CODE_RESERVAID" />
                 <ScalarProperty Name="FECHA_ATENCION" ColumnName="FECHA_ATENCION" />
                 <ScalarProperty Name="START_ATENCION" ColumnName="START_ATENCION" />
-                <ScalarProperty Name="END_ATENCION" ColumnName="END_ATENCION" />
                 <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
                 <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
               </MappingFragment>
@@ -1751,17 +1759,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Hora">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Hora">
+              <MappingFragment StoreEntitySet="Hora">
+                <ScalarProperty Name="HORAID" ColumnName="HORAID" />
+                <ScalarProperty Name="HORA1" ColumnName="HORA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Horario">
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Horario">
               <MappingFragment StoreEntitySet="Horario">
                 <ScalarProperty Name="HORARIOID" ColumnName="HORARIOID" />
                 <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
-                <ScalarProperty Name="START_ATENTION" ColumnName="START_ATENTION" />
-                <ScalarProperty Name="END_ATENTION" ColumnName="END_ATENTION" />
                 <ScalarProperty Name="FECHA_ATENTION" ColumnName="FECHA_ATENTION" />
                 <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
                 <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
                 <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="ID_HORA" ColumnName="ID_HORA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1809,7 +1824,6 @@
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
                 <ScalarProperty Name="PACIENTEID" ColumnName="PACIENTEID" />
-                <ScalarProperty Name="ID_ROLP" ColumnName="ID_ROLP" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
                 <ScalarProperty Name="ID_FICHA" ColumnName="ID_FICHA" />
                 <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />

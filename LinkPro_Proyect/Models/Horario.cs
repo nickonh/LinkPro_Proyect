@@ -22,15 +22,15 @@ namespace LinkPro_Proyect.Models
     
         public int HORARIOID { get; set; }
         public int ID_MEDICO { get; set; }
-        public Nullable<System.TimeSpan> START_ATENTION { get; set; }
-        public Nullable<System.TimeSpan> END_ATENTION { get; set; }
         public Nullable<System.DateTime> FECHA_ATENTION { get; set; }
         public Nullable<System.DateTime> FECHA_REGISTRO { get; set; }
         public string USUARIO_REGISTRO { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
+        public Nullable<int> ID_HORA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Citas> Citas { get; set; }
+        public virtual Hora Hora { get; set; }
         public virtual Medico Medico { get; set; }
     }
 }

@@ -1,0 +1,178 @@
+﻿@using LinkPro_Proyect.Models
+@model List<FichaCLS>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Ficha del Paciente</h2>
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="x_content">
+        @foreach (var item in Model)
+        {
+            <br />
+            <form class="form-label-left input_mask">
+                <div hidden>
+                    @item.fichaid
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-sm-5">
+                        @Html.LabelFor(p => Model[0].afiliacion)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.afiliacion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @Html.LabelFor(p => Model[0].sexo)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.sexo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        @Html.LabelFor(p => Model[0].masa)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.masa
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        @Html.LabelFor(p => Model[0].altura)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.altura
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        @Html.LabelFor(p => Model[0].grupo_sangre)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.grupo_sangre
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => Model[0].enfermedades)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.enfermedades
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => Model[0].medicamentos)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.medicamentos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => Model[0].alergias)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.alergias
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => Model[0].observaciones)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @item.observaciones
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="m-2">
+                @Html.ActionLink("Regresar", "DetallesPaciente", "GestionPaciente", new { id = @item.id }, new { @class = "btn btn-danger" })
+            </div>
+            <div class="ln_solid"></div>
+        }
+
+    </div>
+</div>
+
+
+

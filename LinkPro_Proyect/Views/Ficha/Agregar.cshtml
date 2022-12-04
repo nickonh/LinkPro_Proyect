@@ -1,0 +1,201 @@
+﻿@using LinkPro_Proyect.Models
+@model FichaCLS
+@{
+    ViewBag.Title = "Agregar";
+
+    List<SelectListItem> listaAfil = (List<SelectListItem>)ViewBag.LAfiliado;
+    List<SelectListItem> listaSex = (List<SelectListItem>)ViewBag.LSexo;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Ficha del Paciente</h2>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div class="x_content">
+        <br />
+        @using (Html.BeginForm("Agregar", "Ficha", FormMethod.Post, new { @id = "Details" }))
+        {
+            <form class="form-label-left input_mask">
+
+                <div class="row">
+                    <div class="col-md-5 col-sm-5">
+                        @Html.LabelFor(p => p.id_afiliacion)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @Html.DropDownList("id_afiliacion", listaAfil, null, new { @class = "form-control" })
+                                        @Html.ValidationMessage("id_afiliacion", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 col-sm-5">
+                        @Html.LabelFor(p => p.id_sexo)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left">
+                                        @Html.DropDownList("id_sexo", listaSex, null, new { @class = "form-control" })
+                                        @Html.ValidationMessage("id_sexo", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @Html.LabelFor(p => p.masa)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-10 col-sm-10">
+                                        @Html.TextBoxFor(p => p.masa, new { @class = "form-control" })
+                                        @Html.ValidationMessage("masa", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @Html.LabelFor(p => p.altura)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-10 col-sm-10">
+                                        @Html.TextBoxFor(p => p.altura, new { @class = "form-control" })
+                                        @Html.ValidationMessage("altura", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @Html.LabelFor(p => p.grupo_sangre)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-10 col-sm-10">
+                                        @Html.TextBoxFor(p => p.grupo_sangre, new { @class = "form-control" })
+                                        @Html.ValidationMessage("grupo_sangre", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => p.enfermedades)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-11 col-sm-11">
+                                        @Html.EditorFor(p => p.enfermedades, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("enfermedades", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => p.medicamentos)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-11 col-sm-11">
+                                        @Html.EditorFor(p => p.medicamentos, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("medicamentos", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => p.alergias)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-11 col-sm-11">
+                                        @Html.EditorFor(p => p.alergias, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("alergias", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        @Html.LabelFor(p => p.observaciones)
+                        <div class="row ">
+                            <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                                <div class="panel-body">
+                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                    <div class="left col-md-11 col-sm-11">
+                                        @Html.EditorFor(p => p.observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("observaciones", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Guardar" class="btn btn-primary">
+                    @Html.ActionLink("Regresar", "Pacientes", "GestionPaciente", null, new { @class = "btn btn-danger" })
+
+                </div>
+            </form>
+        }
+        <div class="ln_solid"></div>
+    </div>
+
+</div>
+
+<script>
+
+    var Details = document.getElementById("Details");
+    Details.onsubmit = function (e) {
+        e.preventDefault();
+        if (confirm("¿ Desea guardar la Ficha ?") == 1) {
+            Details.submit();
+        }
+    }
+</script>
