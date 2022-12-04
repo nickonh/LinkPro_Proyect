@@ -1,6 +1,7 @@
-﻿
+﻿@using LinkPro_Proyect.Models
+@model List<PacienteCLS>
 @{
-    ViewBag.Title = "Paciente";
+    ViewBag.Title = "Pacientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Agregar Nombre de los Pacientes que PERTENECEN A ESTE PROFESIONAL (MEDICOID) -->
@@ -14,43 +15,61 @@
         </ul>
         <div class="clearfix"></div>
     </div>
-    <div class="x_content">
-        <br />
-        <form class="form-label-left input_mask">
-            <div class="col-md-2 col-sm-2 has-feedback">
-                <div>
-                    <img src="~/Content/PlantillaAlela/images/user.png" alt="Imagen de Usuario" class="img-circle profile_img">
+
+    @foreach (var item in Model)
+    {
+        <div class="x_content">
+            <br />
+            <form class="form-label-left input_mask">
+
+                <div class="col-md-2 col-sm-2 has-feedback">
+                    <div>
+                        <img src="~/Content/PlantillaAlela/images/user.png" alt="Imagen de Usuario" class="img-circle profile_img">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-sm-6  form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nombre"> <!--Nombre del Paciente-->
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-            </div>
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-user form-control-feedback right" aria-hidden="false"></span>
+                        <div class="left">
+                            @item.nombre
+                        </div>
+                    </div>
+                </div>
 
-            <div class="col-md-6 col-sm-6  form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess3" placeholder="Apelldios"> <!--Nombre del Apellido-->
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-            </div>
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-user form-control-feedback right" aria-hidden="false"></span>
+                        <div class="left">
+                            @item.apellido
+                        </div>
+                    </div>
+                </div>
 
-            <div class="col-md-6 col-sm-6  form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Estado"> <!--Nombre del Estado-->
-                <span class="fa fa-bullseye form-control-feedback left" aria-hidden="true"></span>
-            </div>
-            <div class="content col">
-                <div class="col">
-                    <div class="form-group row">
-                        <div class="col-md-9 col-sm-9 offset-md-3">
-                            <div class="col-md-6 col-sm-6 ">
-                                <button type="button" class="btn btn-primary">Datos de Paciente</button> <!--Boton que despliega los datos del PACIENTE SELECCIONADO-->
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <button type="button" class="btn btn-primary">Historial de Citas</button> <!--Boton que Despliega el Historial de CITAS DEL PACIENTE SELECCIONADO-->
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-bullseye form-control-feedback right" aria-hidden="false"></span>
+                        <div class="left">
+                            @item.estadoactual
+                        </div>
+                    </div>
+                </div>
+                <div class="content col">
+                    <div class="col">
+                        <div class="form-group row">
+                            <div class="col-md-9 col-sm-9 offset-md-3">
+                                <div class="col-md-6 col-sm-6 ">
+                                    @Html.ActionLink("Datos del Paciente","DetallesPaciente", "GestionPaciente", new { id=@item.pacienteid }, new { @class = "btn btn-primary" })
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    @Html.ActionLink("Historial de Citas","Index", "Cita", new { id = @item.pacienteid }, new { @class = "btn btn-primary" })
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <div class="ln_solid"></div>
-    </div>
+            </form>
+            <div class="ln_solid"></div>
+        </div>
+    }
+
 </div>

@@ -13,10 +13,10 @@ namespace LinkPro_Proyect.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LinkPro_Test_Old_Entidades : DbContext
+    public partial class LinkPro_Test_Old_Update : DbContext
     {
-        public LinkPro_Test_Old_Entidades()
-            : base("name=LinkPro_Test_Old_Entidades")
+        public LinkPro_Test_Old_Update()
+            : base("name=LinkPro_Test_Old_Update")
         {
         }
     
@@ -33,6 +33,7 @@ namespace LinkPro_Proyect.Models
         public virtual DbSet<Especialidad> Especialidad { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Ficha> Ficha { get; set; }
+        public virtual DbSet<Hora> Hora { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Medico> Medico { get; set; }
         public virtual DbSet<Medico_Especial> Medico_Especial { get; set; }

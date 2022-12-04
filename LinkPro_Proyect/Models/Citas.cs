@@ -20,8 +20,7 @@ namespace LinkPro_Proyect.Models
         public Nullable<int> ID_ESTADO { get; set; }
         public Nullable<int> CODE_RESERVAID { get; set; }
         public Nullable<System.DateTime> FECHA_ATENCION { get; set; }
-        public Nullable<System.TimeSpan> START_ATENCION { get; set; }
-        public Nullable<System.TimeSpan> END_ATENCION { get; set; }
+        public string START_ATENCION { get; set; }
         public string OBSERVACIONES { get; set; }
         public int ID_HORARIO { get; set; }
     

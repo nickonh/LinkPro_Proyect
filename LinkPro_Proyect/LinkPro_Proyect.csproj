@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -45,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
@@ -155,15 +156,15 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Models_Entity.Context.tt">
+    <Content Include="Models\Modelos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Models_Entity.edmx</DependentUpon>
-      <LastGenOutput>Models_Entity.Context.cs</LastGenOutput>
+      <DependentUpon>Modelos.edmx</DependentUpon>
+      <LastGenOutput>Modelos.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Models_Entity.tt">
+    <Content Include="Models\Modelos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Models_Entity.edmx</DependentUpon>
-      <LastGenOutput>Models_Entity.cs</LastGenOutput>
+      <DependentUpon>Modelos.edmx</DependentUpon>
+      <LastGenOutput>Modelos.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -175,6 +176,7 @@
     <Content Include="Scripts\gcal.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\lib\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
     <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
@@ -957,111 +959,119 @@
     <Content Include="Scripts\Vendors\switchery\dist\switchery.js" />
     <Content Include="Scripts\Vendors\switchery\dist\switchery.min.css" />
     <Content Include="Scripts\Vendors\switchery\dist\switchery.min.js" />
-    <Content Include="Views\GestionPaciente\default.html" />
-    <Content Include="Views\GestionPaciente\form.html" />
-    <Content Include="Views\GestionPaciente\selectable.html" />
-    <Content Include="Views\GestionPaciente\timegrid-views.html" />
+    <Content Include="Views\GestionHorario\default.html" />
+    <Content Include="Views\GestionHorario\form.html" />
+    <Content Include="Views\GestionHorario\selectable.html" />
+    <Content Include="Views\GestionHorario\timegrid-views.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
+    <Compile Include="Controllers\FichaController.cs" />
+    <Compile Include="Controllers\GestionHorarioController.cs" />
     <Compile Include="Controllers\GestionPacienteController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Afiliacion.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CitaCLS.cs" />
     <Compile Include="Models\Citas.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ciudad.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comuna.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Documentos.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Especialidad.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ficha.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FichaCLS.cs" />
+    <Compile Include="Models\Hora.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Horario.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MedicoCLS.cs" />
     <Compile Include="Models\Medico_Especial.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Models_Entity.Context.cs">
+    <Compile Include="Models\Modelos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Models_Entity.Context.tt</DependentUpon>
+      <DependentUpon>Modelos.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Models_Entity.cs">
+    <Compile Include="Models\Modelos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Models_Entity.Designer.cs">
+    <Compile Include="Models\Modelos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Models_Entity.edmx</DependentUpon>
+      <DependentUpon>Modelos.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Paciente.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PacienteCLS.cs" />
     <Compile Include="Models\Pac_Med.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pagina.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RolPagina.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sexo.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursal.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Models_Entity.tt</DependentUpon>
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\Models_Entity.edmx">
+    <EntityDeploy Include="Models\Modelos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Models_Entity.Designer.cs</LastGenOutput>
+      <LastGenOutput>Modelos.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Models_Entity.edmx.diagram">
-      <DependentUpon>Models_Entity.edmx</DependentUpon>
+    <Content Include="Models\Modelos.edmx.diagram">
+      <DependentUpon>Modelos.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -1111,7 +1121,6 @@
     <Content Include="Scripts\Vendors\animate.css\animate-config.json" />
     <Content Include="Scripts\Vendors\animate.css\bower.json" />
     <Content Include="Scripts\Vendors\animate.css\package.json" />
-    <Content Include="Views\GestionPaciente\Index.cshtml" />
     <Content Include="Scripts\Vendors\iCheck\.bower.json" />
     <Content Include="Scripts\Vendors\iCheck\bower.json" />
     <Content Include="Scripts\Vendors\iCheck\icheck.jquery.json" />
@@ -1132,6 +1141,11 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Views\GestionPaciente\Pacientes.cshtml" />
+    <Content Include="Views\GestionHorario\Index.cshtml" />
+    <Content Include="Views\GestionPaciente\DetallesPaciente.cshtml" />
+    <Content Include="Views\Ficha\Index.cshtml" />
+    <Content Include="Views\Ficha\Agregar.cshtml" />
+    <Content Include="Views\Ficha\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1141,6 +1155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cita\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -1181,8 +1196,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

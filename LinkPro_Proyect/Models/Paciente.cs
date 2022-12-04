@@ -23,7 +23,6 @@ namespace LinkPro_Proyect.Models
         }
     
         public int PACIENTEID { get; set; }
-        public int ID_ROLP { get; set; }
         public int ID_USUARIO { get; set; }
         public Nullable<int> ID_FICHA { get; set; }
         public Nullable<int> ID_COMUNA { get; set; }
@@ -52,7 +51,6 @@ namespace LinkPro_Proyect.Models
         public virtual Ficha Ficha { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pac_Med> Pac_Med { get; set; }
-        public virtual Rol Rol { get; set; }
         public virtual Sexo Sexo { get; set; }
         public virtual Usuario Usuario { get; set; }
     }

@@ -25,7 +25,7 @@ namespace LinkPro_Proyect.Models
         public int id_region { get; set; }
         [Display(Name = "Sexo")]
         public int sexo { get; set; }
-        [Display(Name = "Id Estado")]
+        [Display(Name = "Estado")]
         public int id_estado { get; set; }
         [Display(Name = "Id Documento")]
         public int id_Documento { get; set; }
@@ -49,7 +49,6 @@ namespace LinkPro_Proyect.Models
         [Required]
         [StringLength(9, ErrorMessage = "Longitud Maxima 9 Caracteres")]
         public string telefono { get; set; }
-        [Required]
         [Display(Name = "Fecha de Nacimiento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -74,5 +73,9 @@ namespace LinkPro_Proyect.Models
 
         [Display(Name ="Rol del Usuario")]
         public string nombrerol { get; set; }
+
+        //Propiedad Adicional tabla Relacional 
+
+        public IEnumerable<CitaCLS> Citas { get; set; }
     }
 }

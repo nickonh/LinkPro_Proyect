@@ -12,23 +12,18 @@ namespace LinkPro_Proyect.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Rol
+    public partial class Hora
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rol()
+        public Hora()
         {
-            this.Usuario = new HashSet<Usuario>();
-            this.RolPagina = new HashSet<RolPagina>();
+            this.Horario = new HashSet<Horario>();
         }
     
-        public int ROLID { get; set; }
-        public string NOMBRE { get; set; }
-        public string DESCRIPCION { get; set; }
-        public Nullable<int> BHABILITADO { get; set; }
+        public int HORAID { get; set; }
+        public string HORA1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RolPagina> RolPagina { get; set; }
+        public virtual ICollection<Horario> Horario { get; set; }
     }
 }

@@ -1,0 +1,190 @@
+﻿@using LinkPro_Proyect.Models
+@model PacienteCLS
+@{
+    ViewBag.Title = "DetallesPaciente";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> listaEstado = (List<SelectListItem>)ViewBag.lista;
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Detalles</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                Detalles de paciente seleccionado
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="x_content">
+        @using (Html.BeginForm("DetallesPaciente", "GestionPaciente", FormMethod.Post, new {@id= "Details" }))
+        {
+            <br />
+            <form class="form-label-left input_mask">
+                <div class="col-md-2 col-sm-2 has-feedback">
+                    <div>
+                        <img src="~/Content/PlantillaAlela/images/user.png" alt="Imagen de Usuario" class="img-circle profile_img">
+                    </div>
+                </div>
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.nombre)
+                            @Html.TextBoxFor(p => p.nombre, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("nombre", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-3 col-sm-3 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-calendar-o form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.fecha_nacimiento)
+                            @Html.DisplayFor(p => p.fecha_nacimiento, new { value = Model.fecha_nacimiento.ToString("dd/MM/yyyy"), @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("fecha_nacimiento", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.apellido)
+                            @Html.TextBoxFor(p => p.apellido, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("apellido", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-info-circle form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.rut)
+                            @Html.TextBoxFor(p => p.rut, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("rut", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.direccion)
+                            @Html.TextBoxFor(p => p.direccion, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("direccion", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.telefono)
+                            @Html.TextBoxFor(p => p.telefono, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("telefono", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-left">
+                    <div class="panel-body">
+                        <span class="fa fa-envelope form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.email)
+                            @Html.TextBoxFor(p => p.email, new { @class = "form-control", @readOnly = true })
+                            @Html.ValidationMessage("email", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel col-md-6 col-sm-6 has-feedback-right">
+                    <div class="panel-body">
+                        <span class="fa fa-bullseye form-control-feedback right" aria-hidden="true"></span>
+                        <div class="left">
+                            @Html.LabelFor(p => p.id_estado)
+                            @Html.DropDownList("id_estado", listaEstado, null, new { @class = "form-control" })
+                            @Html.ValidationMessage("id_estado", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col pull-left">
+                    <input type="submit" value="Guardar" class="btn btn-primary">
+                    @Html.ActionLink("Regresar", "Pacientes", "GestionPaciente", null, new { @class = "btn btn-danger" })
+                </div>
+            </form>
+            <div class="ln_solid"></div>
+
+            <div class="x_panel col-md-3 col-sm-3 has-feedback-right">
+                <div class="panel-body">
+                    <span class="fa fa-calendar-o form-control-feedback right" aria-hidden="true"></span>
+                    <div class="left">
+                        @Html.LabelFor(p => p.fecha_inscrito)
+                        @Html.DisplayFor(p => p.fecha_inscrito, new { value = Model.fecha_nacimiento.ToString("dd/MM/yyyy"), @class = "form-control", @readOnly = true })
+                        @Html.ValidationMessage("fecha_inscrito", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <!--- Datos del Profesional --->
+                <h2>Ficha del Paciente</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <!--- Trear Datos del Profesional/ Solo de Lectura --->
+                    <div class="item form-group">
+                        @if (Model.id_ficha < 0)
+                        {
+                            <div class="col">
+                                @Html.ActionLink("Agregar Ficha", "Agregar", "Ficha", new { id = Model.pacienteid }, new { @class = "col-md-4 col-sm-4 offset-md-2 btn btn-primary" })
+                            </div>
+                        }
+                        <div class="col">
+                            @Html.ActionLink("Ver Ficha", "Index", "Ficha", new { id = Model.pacienteid }, new { @class = "col-md-4 col-sm-4 offset-md-2 btn btn-info" })
+                        </div>
+                        <div class="col">
+                            @Html.ActionLink("Editar Ficha", "Editar", "Ficha", new { id = Model.id_ficha }, new { @class = "col-md-4 col-sm-4 offset-md-2 btn btn-secondary" })
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var Details = document.getElementById("Details");
+    Details.onsubmit = function (e) {
+        e.preventDefault();
+        if (confirm("¿ Desea Aplicar los Cambios ?") == 1) {
+            Details.submit();
+        }
+    }
+</script> 
