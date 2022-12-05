@@ -10,10 +10,33 @@ namespace LinkPro_Proyect.Controllers
     public class CitaController : Controller
     {
         // GET: Cita
-        public ActionResult Index()
+        public ActionResult DetalleCitas(int id/*idLog*/)
         {
-
-            return View();
+            List<CitaCLS> listCita = null;
+            using (var bd = new LinkPro_Test_Old_Update())
+            {
+                listCita = (from cita in bd.Citas
+                            join paciente in bd.Paciente
+                            on cita.ID_PACIENTE equals paciente.PACIENTEID
+                            join medico in bd.Medico
+                            on cita.ID_MEDICO equals medico.MEDICOID
+                            join estado in bd.Estado
+                            on cita.ID_ESTADO equals estado.ESTADOID
+                            //where cita.ID_MEDICO == idLog
+                            //&& 
+                            where cita.BHABILITADO == 1
+                            && paciente.PACIENTEID == id
+                            select new CitaCLS
+                            {
+                                citasid = cita.CITASID,
+                                code_reservaid = (int)cita.CODE_RESERVAID,
+                                nombreEstado = estado.NOMBRE,
+                                fecha_atencion = cita.FECHA_ATENCION,
+                                start_atencion = cita.HORA_ATENCION,
+                                observaciones = cita.OBSERVACIONES
+                            }).ToList();
+            }
+            return View(listCita);
         }
     }
 }

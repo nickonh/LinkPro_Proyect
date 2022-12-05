@@ -12,16 +12,19 @@ namespace LinkPro_Proyect.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Hora
+    public partial class Disponibilidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Hora()
+        public Disponibilidad()
         {
             this.Horario = new HashSet<Horario>();
         }
     
-        public int HORAID { get; set; }
-        public string HORA1 { get; set; }
+        public int DISPID { get; set; }
+        public string NOMBRE { get; set; }
+        public Nullable<int> BHABILITADO { get; set; }
+        public string COLOR { get; set; }
+        public string TEXTCOLOR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horario> Horario { get; set; }

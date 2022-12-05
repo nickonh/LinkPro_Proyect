@@ -33,7 +33,6 @@ namespace LinkPro_Proyect.Models
         public virtual DbSet<Especialidad> Especialidad { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Ficha> Ficha { get; set; }
-        public virtual DbSet<Hora> Hora { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Medico> Medico { get; set; }
         public virtual DbSet<Medico_Especial> Medico_Especial { get; set; }
@@ -47,5 +46,6 @@ namespace LinkPro_Proyect.Models
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Disponibilidad> Disponibilidad { get; set; }
     }
 }

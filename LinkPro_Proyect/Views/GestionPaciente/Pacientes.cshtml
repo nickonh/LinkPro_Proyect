@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Pacientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 <!-- Agregar Nombre de los Pacientes que PERTENECEN A ESTE PROFESIONAL (MEDICOID) -->
 <div class="x_panel">
@@ -58,10 +59,10 @@
                         <div class="form-group row">
                             <div class="col-md-9 col-sm-9 offset-md-3">
                                 <div class="col-md-6 col-sm-6 ">
-                                    @Html.ActionLink("Datos del Paciente","DetallesPaciente", "GestionPaciente", new { id=@item.pacienteid }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Datos del Paciente", "DetallesPaciente", "GestionPaciente", new { id = @item.pacienteid }, new { @class = "btn btn-primary" })
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    @Html.ActionLink("Historial de Citas","Index", "Cita", new { id = @item.pacienteid }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Historial de Citas", "DetalleCitas", "Cita", new { id = @item.pacienteid }, new { @class = "btn btn-primary" })
                                 </div>
                             </div>
                         </div>
@@ -71,5 +72,4 @@
             <div class="ln_solid"></div>
         </div>
     }
-
 </div>

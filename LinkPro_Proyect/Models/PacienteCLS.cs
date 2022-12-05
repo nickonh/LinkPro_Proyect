@@ -76,6 +76,6 @@ namespace LinkPro_Proyect.Models
 
         //Propiedad Adicional tabla Relacional 
 
-        public IEnumerable<CitaCLS> Citas { get; set; }
+        public ICollection<CitaCLS> Citas { get; set; }
     }
 }
