@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Especialidad" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Estado" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Ficha" Width="1.5" PointX="11.25" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Hora" Width="1.5" PointX="9" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Horario" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Medico" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Medico_Especial" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
@@ -45,7 +44,6 @@
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESTADOP" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_FICHA" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_SEXO" ManuallyRouted="false" />
-        <AssociationConnector Association="LinkPro_Test_OldModel.FK_HORA" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO_PM" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_MEDICO_SU" ManuallyRouted="false" />
@@ -60,6 +58,8 @@
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_REGION_SU" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROL" ManuallyRouted="false" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROLPG" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LinkPro_Test_OldModel.Disponibilidad" Width="1.5" PointX="6.375" PointY="0.875" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_DISPONIBILIDAD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

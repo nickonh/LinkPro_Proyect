@@ -1,215 +1,265 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Horario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--  -->
-<html>
-<body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <!-- page content -->
-            <div class="right_col" role="main">
-                <div class="">
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h3>Mi Horario</h3>
-                        </div>
+<!-- page content -->
+<div class="" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Mi Horario</h3>
+            </div>
 
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!-- Alert Dismissing-->
+                <div id="divErrors"
+                     class="alert alert-danger alert-dismissible fade show" role="alert"
+                     style="display:none">
+                    <strong>
+                        <span id="errors"></span>
+                    </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- /Alert Dismissing-->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <!--- Datos del Profesional --->
+                        <h2>Datos del Profesional</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <!--- Datos del Profesional --->
-                                    <h2>Datos del Profesional</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li>
-                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
+                    <div class="x_content">
+                        <br />
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <!--- Trear Datos del Profesional/ Solo de Lectura --->
+
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                    <!--- Nombre --->
+                                    Nombre
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" id="first-name" class="form-control ">
                                 </div>
-                                <div class="x_content">
-                                    <br />
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                        <!--- Trear Datos del Profesional/ Solo de Lectura --->
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                    <!--- Apellido --->
+                                    Apellido
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" id="last-name" name="last-name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <!--- DESPLEGAR OPCIONES DE ESPECIALIDAD MEDICA --->
+                                <label class="col form label col-md-3 col-sm-3 label-align" for="heard">
+                                    Especialidad:
+                                </label>
+                                <div class="col-md-6 col-sm-6">
+                                    <select id="heard" class="form-control" required>
+                                        <option value="">Choose..</option>
+                                        <option value="press">Press</option>
+                                        <option value="net">Internet</option>
+                                        <option value="mouth">Word of mouth</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                                <button type="button" class="col-md-2 col-sm-2 offset-md-5 btn btn-success" data-toggle="modal" data-target=".AgregarHorario">
+                                    Agregar Horario
+                                </button>
+                            </div>
 
-                                        <div class="item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
-                                                <!--- Nombre --->
-                                                Nombre
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="first-name" class="form-control ">
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
-                                                <!--- Apellido --->
-                                                Apellido
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="last-name" name="last-name" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <!--- DESPLEGAR OPCIONES DE ESPECIALIDAD MEDICA --->
-                                            <label class="col form label col-md-3 col-sm-3 label-align" for="heard">
-                                                Especialidad:
-                                            </label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <select id="heard" class="form-control" required>
-                                                    <option value="">Choose..</option>
-                                                    <option value="press">Press</option>
-                                                    <option value="net">Internet</option>
-                                                    <option value="mouth">Word of mouth</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="ln_solid"></div>
-                                        <div class="item form-group">
-                                            <button type="button" class="col-md-2 col-sm-2 offset-md-5 btn btn-success" data-toggle="modal" data-target=".AgregarHorario">
-                                                Agregar Horario
-                                            </button>
-                                        </div>
-
-                                    </form>
-                                    <!-- Modal -->
-                                    <div class="modal fade AgregarHorario" tabindex="-1" role="dialog" aria-labelledby="myAgregarHorario" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title"> Agregar Horario </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="modal-body">
-                                                        <form>
-                                                            <div class="item form-group">
-                                                                <label class="col-form-label col-md-3 col-sm-3 label-align">
-                                                                    Día disponible para Cita <span class="required">*</span>
-                                                                </label>
-                                                                <div class="col-md-6 col-sm-6 ">
-                                                                    <input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                                                                    <script>
-                                                                        function timeFunctionLong(input) {
-                                                                            setTimeout(function () {
-                                                                                input.type = 'text';
-                                                                            }, 60000);
-                                                                        }
-                                                                    </script>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Dropdown para las Horas -->
-                                                            <div class="item form-group">
-                                                                <label class="col-form-label col-md-3 col-sm-3 label-align">
-                                                                    Hora de Atención <span class="required">*</span>
-                                                                </label>
-                                                                <div class="col-md-6 col-sm-6 ">
-                                                                    <input type="time" id="Atencion" name="Atencion" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Dropdown para las Horas -->
-                                                        </form>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                                            <button type="button" class="btn btn-primary">Registrar</button>
-                                                        </div>
+                        </form>
+                        <!-- Modal -->
+                        <div class="modal fade AgregarHorario" tabindex="-1" role="dialog" aria-labelledby="myAgregarHorario" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> Agregar Horario </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="item form-group">
+                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                                        Día disponible para Cita <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 ">
+                                                        <input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                                        <script>
+                                                            function timeFunctionLong(input) {
+                                                                setTimeout(function () {
+                                                                    input.type = 'text';
+                                                                }, 60000);
+                                                            }
+                                                        </script>
                                                     </div>
                                                 </div>
+                                                <!-- Dropdown para las Horas -->
+                                                <div class="item form-group">
+                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                                        Hora de Atención <span class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 ">
+                                                        <input type="time" id="Atencion" name="Atencion" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <!-- /Dropdown para las Horas -->
+                                            </form>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button><!-- mandar id del medico al hacer click -->
+                                                <button type="button" class="btn btn-primary">Registrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /Modal -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <!--- Contenedor del Calendario --->
-                        <div class="col-md-12 col-sm-12">
-                            <div class="x_content">
-                                <div class="page-title">
-                                    <div class="title_left">
-                                        <h3>Horario del Mes </h3>
-                                    </div>
-                                    <!--- Buscador --->
-                                    <div class="title_right">
-                                        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search for...">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-default" type="button">Go!</button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--- /Buscador --->
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="x_panel">
-                                        <div class="x_title">
-                                            <h2>Registrar Disponibilidad</h2>
-                                            <ul class="nav navbar-right panel_toolbox">
-                                                <li>
-                                                    Click en el día que deseas registrar
-                                                </li>
-                                            </ul>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="x_content">
-                                            <div id='calendar'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---Contenedor del Calendario --->
-                        </div>
+                        <!-- /Modal -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <!--- Contenedor del Calendario --->
+            <div class="col-md-12 col-sm-12">
+                <div class="x_content">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Horario del Mes </h3>
+                        </div>
+                        <!--- Buscador --->
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- /Buscador --->
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Registrar Disponibilidad</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        Click en el día que deseas registrar
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id='calendar'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---Contenedor del Calendario --->
+            </div>
+        </div>
     </div>
+</div>
 
-    <script>
 
-        //JQuery
-        $(function () {
-            GetHorarioCalendar();
+<script>
+
+    var medicoid = @ViewBag.Med;
+
+    //JQuery
+    $(function ()
+    {
+        GetHorarioCalendar();
+    });
+
+    function GetHorarioCalendar(medicoid) {
+
+        $.get('/GestionHorario/GetCalendar?id=' + medicoid)
+            .done(function (data) {
+                var IsSuccessful = data.IsSuccessful;
+
+                if (IsSuccessful) {
+                    var events = [];
+
+                    $.each(data.Data, function (idx, items) {
+                        events.push({
+                            'id': items.horarioid,
+                            'title': items.nombreDisp,
+                            'start': items.fullinicio,
+                            'end': items.fullfin,
+                            'allDay': items.all_day,
+                            'color': items.colorDisp,
+                            'textColor': items.textDisp
+                        });
+                    });
+
+                    var calendarEl = document.getElementById('calendar');
+
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        plugins: ['dayGrid', 'interaction'],
+                        header: {
+                            left: 'prevYear,prev,next,nextYear today',
+                            center: 'title',
+                            right: 'dayGridMonth,dayGridWeek,dayGridDay'
+                        },
+                        navLinks: true,
+                        eventLimit: true,
+                        eventClick: function (eventObj) {
+                        },
+
+                        events: events,
+
+                        eventTimeFormat:
+                        {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12:false,
+                        }
+                    });
+
+                    calendar.render();
+                }
+                else {
+                    var errors = data.Errors;
+                    displayValidationErrors(errors);
+                }
+            });
+    }
+
+    function displayValidationErrors(errors)
+    {
+        var $ul = $('<ul>');
+        $ul.empty();
+
+        $.each(errors, function (idx, errorMessage) {
+            $ul.append('<li>' + errorMessage + '</li>');
         });
 
-        function GetHorarioCalendar() {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['dayGrid', 'interaction'],
-                header:
-                {
-                    left: 'prevYear,prev,next,nextYear today',
-                    center: 'title',
-                    right: 'dayGridMonth,dayGridWeek,dayGridDay'
-                },
-                navLinks: true,
-                eventLimit: true,
-                eventClick: function (eventObj) {
-                },
-
-                events: event
-            });
-
-            calendar.render();
-        }
-    </script>
-
-</body>
-</html>
+        $('#errors').html($ul);
+        $('#divErrors').show();
+    }
+</script>
 

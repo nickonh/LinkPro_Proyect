@@ -22,10 +22,13 @@
           <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
           <Property Name="ID_ESTADO" Type="int" />
           <Property Name="CODE_RESERVAID" Type="int" />
-          <Property Name="FECHA_ATENCION" Type="date" />
-          <Property Name="START_ATENCION" Type="varchar" MaxLength="5" />
-          <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
+          <Property Name="FECHA_ATENCION" Type="varchar" MaxLength="10" />
+          <Property Name="HORA_ATENCION" Type="varchar" MaxLength="8" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="500" />
           <Property Name="ID_HORARIO" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="FECHA_FIN" Type="varchar" MaxLength="10" />
+          <Property Name="HORA_FIN" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="Ciudad">
           <Key>
@@ -44,6 +47,16 @@
           <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
           <Property Name="BHABILITADO" Type="int" />
           <Property Name="ID_CIUDAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disponibilidad">
+          <Key>
+            <PropertyRef Name="DISPID" />
+          </Key>
+          <Property Name="DISPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="13" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="COLOR" Type="varchar" MaxLength="7" />
+          <Property Name="TEXTCOLOR" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="Documentos">
           <Key>
@@ -89,24 +102,21 @@
           <Property Name="ALERGIAS" Type="nvarchar" MaxLength="200" />
           <Property Name="OBSERVACIONES" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="Hora">
-          <Key>
-            <PropertyRef Name="HORAID" />
-          </Key>
-          <Property Name="HORAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HORA" Type="varchar" MaxLength="5" />
-        </EntityType>
         <EntityType Name="Horario">
           <Key>
             <PropertyRef Name="HORARIOID" />
           </Key>
           <Property Name="HORARIOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_MEDICO" Type="int" Nullable="false" />
-          <Property Name="FECHA_ATENTION" Type="date" />
+          <Property Name="FECHA_ATENTION" Type="varchar" MaxLength="10" />
           <Property Name="FECHA_REGISTRO" Type="date" />
           <Property Name="USUARIO_REGISTRO" Type="varchar" MaxLength="50" />
           <Property Name="BHABILITADO" Type="int" />
-          <Property Name="ID_HORA" Type="int" />
+          <Property Name="ID_DISP" Type="int" />
+          <Property Name="HORA_ATENTION" Type="varchar" MaxLength="8" />
+          <Property Name="FECHA_FIN" Type="varchar" MaxLength="10" />
+          <Property Name="HORA_FIN" Type="varchar" MaxLength="8" />
+          <Property Name="ALL_DAY" Type="bit" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -306,6 +316,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DISPONIBILIDAD">
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="0..1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disponibilidad">
+              <PropertyRef Name="DISPID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_DISP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DOCUMENTO">
           <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
@@ -375,18 +397,6 @@
             </Principal>
             <Dependent Role="Paciente">
               <PropertyRef Name="ID_FICHA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HORA">
-          <End Role="Hora" Type="Self.Hora" Multiplicity="0..1" />
-          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hora">
-              <PropertyRef Name="HORAID" />
-            </Principal>
-            <Dependent Role="Horario">
-              <PropertyRef Name="ID_HORA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -647,11 +657,11 @@
           <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disponibilidad" EntityType="Self.Disponibilidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ficha" EntityType="Self.Ficha" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Hora" EntityType="Self.Hora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" Schema="dbo" store:Type="Tables" />
@@ -685,6 +695,10 @@
             <End Role="Comuna" EntitySet="Comuna" />
             <End Role="Paciente" EntitySet="Paciente" />
           </AssociationSet>
+          <AssociationSet Name="FK_DISPONIBILIDAD" Association="Self.FK_DISPONIBILIDAD">
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
           <AssociationSet Name="FK_DOCUMENTO" Association="Self.FK_DOCUMENTO">
             <End Role="Documentos" EntitySet="Documentos" />
             <End Role="Paciente" EntitySet="Paciente" />
@@ -708,10 +722,6 @@
           <AssociationSet Name="FK_FICHA" Association="Self.FK_FICHA">
             <End Role="Ficha" EntitySet="Ficha" />
             <End Role="Paciente" EntitySet="Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HORA" Association="Self.FK_HORA">
-            <End Role="Hora" EntitySet="Hora" />
-            <End Role="Horario" EntitySet="Horario" />
           </AssociationSet>
           <AssociationSet Name="FK_HORARIO" Association="Self.FK_HORARIO">
             <End Role="Horario" EntitySet="Horario" />
@@ -820,14 +830,17 @@
           <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
           <Property Name="ID_ESTADO" Type="Int32" />
           <Property Name="CODE_RESERVAID" Type="Int32" />
-          <Property Name="FECHA_ATENCION" Type="DateTime" Precision="0" />
-          <Property Name="START_ATENCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_ATENCION" Type="String" Unicode="false" MaxLength="10" FixedLength="false" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ID_HORARIO" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOC" FromRole="Citas" ToRole="Estado" />
           <NavigationProperty Name="Horario" Relationship="Self.FK_HORARIO" FromRole="Citas" ToRole="Horario" />
           <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICOC" FromRole="Citas" ToRole="Medico" />
           <NavigationProperty Name="Paciente" Relationship="Self.FK_PACIENTE" FromRole="Citas" ToRole="Paciente" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="HORA_ATENCION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_FIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HORA_FIN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Ciudad">
           <Key>
@@ -907,28 +920,24 @@
           <NavigationProperty Name="Paciente" Relationship="Self.FK_FICHA" FromRole="Ficha" ToRole="Paciente" />
           <NavigationProperty Name="Sexo" Relationship="Self.FK_SEXO" FromRole="Ficha" ToRole="Sexo" />
         </EntityType>
-        <EntityType Name="Hora">
-          <Key>
-            <PropertyRef Name="HORAID" />
-          </Key>
-          <Property Name="HORAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HORA1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Horario" Relationship="Self.FK_HORA" FromRole="Hora" ToRole="Horario" />
-        </EntityType>
         <EntityType Name="Horario">
           <Key>
             <PropertyRef Name="HORARIOID" />
           </Key>
           <Property Name="HORARIOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_MEDICO" Type="Int32" Nullable="false" />
-          <Property Name="FECHA_ATENTION" Type="DateTime" Precision="0" />
+          <Property Name="FECHA_ATENTION" Type="String" FixedLength="false" MaxLength="10" Unicode="false" />
           <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
           <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BHABILITADO" Type="Int32" />
-          <Property Name="ID_HORA" Type="Int32" />
           <NavigationProperty Name="Citas" Relationship="Self.FK_HORARIO" FromRole="Horario" ToRole="Citas" />
-          <NavigationProperty Name="Hora" Relationship="Self.FK_HORA" FromRole="Horario" ToRole="Hora" />
           <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO" FromRole="Horario" ToRole="Medico" />
+          <Property Name="ID_DISP" Type="Int32" />
+          <Property Name="HORA_ATENTION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_FIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HORA_FIN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disponibilidad" Relationship="LinkPro_Test_OldModel.FK_DISPONIBILIDAD" FromRole="Horario" ToRole="Disponibilidad" />
+          <Property Name="ALL_DAY" Type="Boolean" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -1325,18 +1334,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HORA">
-          <End Role="Hora" Type="Self.Hora" Multiplicity="0..1" />
-          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hora">
-              <PropertyRef Name="HORAID" />
-            </Principal>
-            <Dependent Role="Horario">
-              <PropertyRef Name="ID_HORA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MEDICO">
           <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
           <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
@@ -1514,7 +1511,6 @@
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Ficha" EntityType="Self.Ficha" />
-          <EntitySet Name="Hora" EntityType="Self.Hora" />
           <EntitySet Name="Horario" EntityType="Self.Horario" />
           <EntitySet Name="Medico" EntityType="Self.Medico" />
           <EntitySet Name="Medico_Especial" EntityType="Self.Medico_Especial" />
@@ -1600,10 +1596,6 @@
             <End Role="Sexo" EntitySet="Sexo" />
             <End Role="Ficha" EntitySet="Ficha" />
           </AssociationSet>
-          <AssociationSet Name="FK_HORA" Association="Self.FK_HORA">
-            <End Role="Hora" EntitySet="Hora" />
-            <End Role="Horario" EntitySet="Horario" />
-          </AssociationSet>
           <AssociationSet Name="FK_MEDICO" Association="Self.FK_MEDICO">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Horario" EntitySet="Horario" />
@@ -1660,7 +1652,35 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="RolPagina" EntitySet="RolPagina" />
           </AssociationSet>
+          <EntitySet Name="Disponibilidad" EntityType="LinkPro_Test_OldModel.Disponibilidad" />
+          <AssociationSet Name="FK_DISPONIBILIDAD" Association="LinkPro_Test_OldModel.FK_DISPONIBILIDAD">
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Disponibilidad">
+          <Key>
+            <PropertyRef Name="DISPID" />
+          </Key>
+          <Property Name="DISPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="Horario" Relationship="LinkPro_Test_OldModel.FK_DISPONIBILIDAD" FromRole="Disponibilidad" ToRole="Horario" />
+          <Property Name="COLOR" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="TEXTCOLOR" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_DISPONIBILIDAD">
+          <End Type="LinkPro_Test_OldModel.Disponibilidad" Role="Disponibilidad" Multiplicity="0..1" />
+          <End Type="LinkPro_Test_OldModel.Horario" Role="Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disponibilidad">
+              <PropertyRef Name="DISPID" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="ID_DISP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1679,13 +1699,16 @@
           <EntitySetMapping Name="Citas">
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Citas">
               <MappingFragment StoreEntitySet="Citas">
+                <ScalarProperty Name="HORA_FIN" ColumnName="HORA_FIN" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="HORA_ATENCION" ColumnName="HORA_ATENCION" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
                 <ScalarProperty Name="CITASID" ColumnName="CITASID" />
                 <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
                 <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
                 <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
                 <ScalarProperty Name="CODE_RESERVAID" ColumnName="CODE_RESERVAID" />
                 <ScalarProperty Name="FECHA_ATENCION" ColumnName="FECHA_ATENCION" />
-                <ScalarProperty Name="START_ATENCION" ColumnName="START_ATENCION" />
                 <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
                 <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
               </MappingFragment>
@@ -1759,24 +1782,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Hora">
-            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Hora">
-              <MappingFragment StoreEntitySet="Hora">
-                <ScalarProperty Name="HORAID" ColumnName="HORAID" />
-                <ScalarProperty Name="HORA1" ColumnName="HORA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Horario">
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Horario">
               <MappingFragment StoreEntitySet="Horario">
+                <ScalarProperty Name="ALL_DAY" ColumnName="ALL_DAY" />
+                <ScalarProperty Name="HORA_FIN" ColumnName="HORA_FIN" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="HORA_ATENTION" ColumnName="HORA_ATENTION" />
+                <ScalarProperty Name="ID_DISP" ColumnName="ID_DISP" />
                 <ScalarProperty Name="HORARIOID" ColumnName="HORARIOID" />
                 <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
                 <ScalarProperty Name="FECHA_ATENTION" ColumnName="FECHA_ATENTION" />
                 <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
                 <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
                 <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
-                <ScalarProperty Name="ID_HORA" ColumnName="ID_HORA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1927,6 +1946,17 @@
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="SECRETPASS" ColumnName="SECRETPASS" />
                 <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disponibilidad">
+            <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Disponibilidad">
+              <MappingFragment StoreEntitySet="Disponibilidad">
+                <ScalarProperty Name="TEXTCOLOR" ColumnName="TEXTCOLOR" />
+                <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DISPID" ColumnName="DISPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,72 @@
+﻿@using LinkPro_Proyect.Models
+@model List<CitaCLS>
+@{
+    ViewBag.Title = "DetalleCitas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Historial de Citas</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Ir</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-md-12 col-sm-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="table-responsive">
+                        <table class="table table-striped jambo_table">
+                            <thead>
+                                <tr class="headings">
+                                    <th>#</th>
+                                    <th>@Html.LabelFor(p => Model[0].code_reservaid)</th>
+                                    <th>@Html.LabelFor(p => Model[0].nombreEstado)</th>
+                                    <th>@Html.LabelFor(p => Model[0].fecha_atencion)</th>
+                                    <th>@Html.LabelFor(p => Model[0].start_atencion)</th>
+                                    <th>@Html.LabelFor(p => Model[0].observaciones)</th>
+                                    <th><label>Acciones</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Count(); i++)
+                                {
+                                    <tr>
+                                        <th><label>@i</label></th>
+                                        <td>@Model[i].code_reservaid</td>
+                                        <td>@Model[i].nombreEstado</td>
+                                        <td>@(String.Format("{0:dd/MM/yyyy}", Model[i].fecha_atencion))</td>
+                                        <td>@Model[i].start_atencion</td>
+                                        <td>@Model[i].observaciones</td>
+                                        <td></td>
+                                    </tr>
+
+
+                                }
+                            </tbody>
+                        </table>
+                        @Html.ActionLink("Regresar", "Pacientes", "GestionPaciente", null, new { @class = "btn btn-danger" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

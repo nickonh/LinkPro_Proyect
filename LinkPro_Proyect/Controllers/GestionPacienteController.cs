@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using LinkPro_Proyect.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LinkPro_Proyect.Controllers
 {
@@ -37,8 +39,6 @@ namespace LinkPro_Proyect.Controllers
         }
         //GET: Cita
 
-        public async Task<IActionResult>
-
         // GET: Detalles Paciente
         public ActionResult DetallesPaciente(int id)
         {
@@ -49,7 +49,7 @@ namespace LinkPro_Proyect.Controllers
             using (var bd = new LinkPro_Test_Old_Update())
             {
                 Paciente oPaciente = bd.Paciente.Where(p => p.PACIENTEID.Equals(id)).First();
-                if(oPaciente.ID_FICHA == null)
+                if (oPaciente.ID_FICHA == null)
                     oPaciente.ID_FICHA = -1;
                 oPacienteCLS.id_ficha = (int)oPaciente.ID_FICHA;
                 oPacienteCLS.pacienteid = oPaciente.PACIENTEID;
