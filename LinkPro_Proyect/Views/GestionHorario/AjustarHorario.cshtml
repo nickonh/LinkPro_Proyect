@@ -1,0 +1,153 @@
+﻿@using LinkPro_Proyect.Models
+@model List<HorarioCLS>
+@{
+    ViewBag.Title = "AjustarHorario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> listDispo = (List<SelectListItem>)ViewBag.listDisponible;
+    List<SelectListItem> listEspec = (List<SelectListItem>)ViewBag.listaEspecial;
+}
+
+
+<p>
+    @using (Ajax.BeginForm("Filtrar", "", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "divHorario",
+        InsertionMode = InsertionMode.Replace
+    }, new { @id = "frmFiltrado" }))
+    {
+        <div class="" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="col title_left">
+                        <h3>Detalles de Calendario</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <button type="button" onclick="Agregar()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Agregar
+                        </button>
+                        <div class="pull-right">
+                            @Html.Label("Disponibilidad:")
+                            @Html.TextBox("nombreDisp", null, new { @class = "from-control" })
+                            <input type="submit" value="Buscar" class=" btn btn-primary btn-round" />
+                        </div>
+                        <div class="x_title">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="divHorario">
+                            @Html.Partial("_TablaHorario", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agrega tu hora Disponible</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("Guardar", "GestionHorario", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo")
+                @Html.Hidden("medic")
+                <div class="modal-body">
+
+                    <div>
+                        @Html.Label("Fecha de Atención")
+                        @Html.Editor("fecha_atention", null, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    </div>
+                    <div>
+                        @Html.Label("Hora de Atención")
+                        @Html.Editor("hora_atention", null, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                    </div>
+                    <div>
+                        @Html.Label("Hora de Finalización")
+                        @Html.Editor("hora_fin", null, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                    </div>
+                    <div>
+                        @Html.Label("Especialidad")
+                        @Html.DropDownList("id_especialidad", listEspec, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Disponibilidad")
+                        @Html.DropDownList("id_disp", listDispo, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            }
+            <div id="error"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var frmFiltrado = document.getElementById("frmFiltrado");
+    //frmFiltrado.onsubmit = function () {
+    //    $("#frmFiltrado").trigger('submit');
+    //}
+
+    function Agregar() {
+        document.getElementById("titulo").value = "-1";
+        document.getElementById("medic").value = @ViewBag.medic;
+        document.getElementById("errors").innerHTML = "";
+    }
+
+    function Editar(id)
+    {
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("titulo").value = id;
+
+        $.get("/GestionHorario/recuperarDatos/?id="+id, function (data)
+        {
+            document.getElementById("fecha_atention").value=data.cadena_fechaI;
+            document.getElementById("hora_atention").value=data.HoraInicio;
+            document.getElementById("hora_fin").value=data.HoraFin;
+            document.getElementById("id_especialidad").value=data.id_especialidad;
+            document.getElementById("id_disp").value=data.id_disp;
+        })
+    }
+
+    function Guardar(rpta) {
+        if (rpta == "1")
+        {
+            $("#frmFiltrado").trigger("submit");
+            document.getElementById("btnClose").click();
+            alert("Se ejecuto correctamente");
+        }
+        //if (rpta == "true")
+        //{
+        //    alert("Ya Agendo una Cita a la Hora indicada")
+        //}
+        else
+        {
+            if (rpta == "true") {
+                alert("Ya Agendo una Cita a la Hora indicada");
+            }
+            else
+            {
+                alert("A ocurrido un error");
+            }
+        }
+    }
+</script>
