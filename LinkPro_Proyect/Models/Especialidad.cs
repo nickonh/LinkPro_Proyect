@@ -18,6 +18,7 @@ namespace LinkPro_Proyect.Models
         public Especialidad()
         {
             this.Medico_Especial = new HashSet<Medico_Especial>();
+            this.Horario = new HashSet<Horario>();
         }
     
         public int ESPECIALIDADID { get; set; }
@@ -29,5 +30,7 @@ namespace LinkPro_Proyect.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico_Especial> Medico_Especial { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Horario> Horario { get; set; }
     }
 }

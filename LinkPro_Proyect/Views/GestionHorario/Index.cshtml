@@ -1,9 +1,9 @@
-﻿@{
+﻿@using LinkPro_Proyect.Models
+@model List<MedicoCLS>
+@{
     ViewBag.Title = "Horario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!-- page content -->
 <div class="" role="main">
     <div class="">
         <div class="page-title">
@@ -29,110 +29,11 @@
                 <!-- /Alert Dismissing-->
                 <div class="x_panel">
                     <div class="x_title">
-                        <!--- Datos del Profesional --->
-                        <h2>Datos del Profesional</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                            <!--- Trear Datos del Profesional/ Solo de Lectura --->
 
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
-                                    <!--- Nombre --->
-                                    Nombre
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="first-name" class="form-control ">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
-                                    <!--- Apellido --->
-                                    Apellido
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="last-name" name="last-name" class="form-control">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <!--- DESPLEGAR OPCIONES DE ESPECIALIDAD MEDICA --->
-                                <label class="col form label col-md-3 col-sm-3 label-align" for="heard">
-                                    Especialidad:
-                                </label>
-                                <div class="col-md-6 col-sm-6">
-                                    <select id="heard" class="form-control" required>
-                                        <option value="">Choose..</option>
-                                        <option value="press">Press</option>
-                                        <option value="net">Internet</option>
-                                        <option value="mouth">Word of mouth</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="item form-group">
-                                <button type="button" class="col-md-2 col-sm-2 offset-md-5 btn btn-success" data-toggle="modal" data-target=".AgregarHorario">
-                                    Agregar Horario
-                                </button>
-                            </div>
-
-                        </form>
-                        <!-- Modal -->
-                        <div class="modal fade AgregarHorario" tabindex="-1" role="dialog" aria-labelledby="myAgregarHorario" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"> Agregar Horario </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="row">
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="item form-group">
-                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
-                                                        Día disponible para Cita <span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 ">
-                                                        <input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                                                        <script>
-                                                            function timeFunctionLong(input) {
-                                                                setTimeout(function () {
-                                                                    input.type = 'text';
-                                                                }, 60000);
-                                                            }
-                                                        </script>
-                                                    </div>
-                                                </div>
-                                                <!-- Dropdown para las Horas -->
-                                                <div class="item form-group">
-                                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
-                                                        Hora de Atención <span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 ">
-                                                        <input type="time" id="Atencion" name="Atencion" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <!-- /Dropdown para las Horas -->
-                                            </form>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button><!-- mandar id del medico al hacer click -->
-                                                <button type="button" class="btn btn-primary">Registrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <a href="/GestionHorario/AjustarHorario" class="col-md-2 col-sm-2 offset-md-5 btn btn-success">Agregar Horario</a>
                         </div>
-                        <!-- /Modal -->
                     </div>
                 </div>
             </div>
@@ -262,4 +163,7 @@
         $('#divErrors').show();
     }
 </script>
+
+
+
 

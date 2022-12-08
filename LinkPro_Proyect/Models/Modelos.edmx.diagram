@@ -60,6 +60,7 @@
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_ROLPG" ManuallyRouted="false" />
         <EntityTypeShape EntityType="LinkPro_Test_OldModel.Disponibilidad" Width="1.5" PointX="6.375" PointY="0.875" />
         <AssociationConnector Association="LinkPro_Test_OldModel.FK_DISPONIBILIDAD" />
+        <AssociationConnector Association="LinkPro_Test_OldModel.FK_ESPECIALIDAD_HOR" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
