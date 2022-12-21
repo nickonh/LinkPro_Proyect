@@ -19,13 +19,13 @@ namespace LinkPro_Proyect.Models
         public int ID_PACIENTE { get; set; }
         public Nullable<int> ID_ESTADO { get; set; }
         public Nullable<int> CODE_RESERVAID { get; set; }
-        public string FECHA_ATENCION { get; set; }
+        public Nullable<System.DateTime> FECHA_ATENCION { get; set; }
         public string OBSERVACIONES { get; set; }
         public int ID_HORARIO { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
-        public string HORA_ATENCION { get; set; }
-        public string FECHA_FIN { get; set; }
-        public string HORA_FIN { get; set; }
+        public Nullable<System.TimeSpan> HORA_ATENCION { get; set; }
+        public Nullable<System.DateTime> FECHA_FIN { get; set; }
+        public Nullable<System.TimeSpan> HORA_FIN { get; set; }
     
         public virtual Estado Estado { get; set; }
         public virtual Horario Horario { get; set; }

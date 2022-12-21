@@ -40,7 +40,7 @@
                                     <th>@Html.LabelFor(p => Model[0].code_reservaid)</th>
                                     <th>@Html.LabelFor(p => Model[0].nombreEstado)</th>
                                     <th>@Html.LabelFor(p => Model[0].fecha_atencion)</th>
-                                    <th>@Html.LabelFor(p => Model[0].start_atencion)</th>
+                                    <th>@Html.LabelFor(p => Model[0].hora_atencion)</th>
                                     <th>@Html.LabelFor(p => Model[0].observaciones)</th>
                                     <th><label>Acciones</label></th>
                                 </tr>
@@ -53,7 +53,7 @@
                                         <td>@Model[i].code_reservaid</td>
                                         <td>@Model[i].nombreEstado</td>
                                         <td>@(String.Format("{0:dd/MM/yyyy}", Model[i].fecha_atencion))</td>
-                                        <td>@Model[i].start_atencion</td>
+                                        <td>@Model[i].hora_atencion</td>
                                         <td>@Model[i].observaciones</td>
                                         <td></td>
                                     </tr>

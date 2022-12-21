@@ -1,14 +1,9 @@
-﻿using System;
+﻿using LinkPro_Proyect.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.WebPages;
-using LinkPro_Proyect.Models;
-using static System.Net.WebRequestMethods;
 
 namespace LinkPro_Proyect.Controllers
 {
@@ -30,6 +25,7 @@ namespace LinkPro_Proyect.Controllers
 
                 listaMedico = (from medico in bd.Medico
                                where idM.id == medico.MEDICOID
+                               && medico.BHABILITADO == 1
                                select new MedicoCLS
                                {
                                    medicoid = medico.MEDICOID,
@@ -91,6 +87,7 @@ namespace LinkPro_Proyect.Controllers
         public ActionResult AjustarHorario()
         {
             llenarListas();
+            int filtroCount = 1;
             List<HorarioCLS> listHorario = new List<HorarioCLS>();
             using (var bd = new LinkPro_Test_Old_Update())
             {
@@ -126,6 +123,7 @@ namespace LinkPro_Proyect.Controllers
                                id = medico.MEDICOID
                            }).FirstOrDefault();
 
+                ViewBag.searchCount = filtroCount;
                 ViewBag.medic = idM.id;
 
             }
@@ -136,6 +134,8 @@ namespace LinkPro_Proyect.Controllers
         {
             llenarListas();
             string nombreDisp = oHorarioCLS.nombreDisp;
+            int filtroCount = 0;
+
             List<HorarioCLS> listHorario = new List<HorarioCLS>();
             using (var bd = new LinkPro_Test_Old_Update())
             {
@@ -187,10 +187,14 @@ namespace LinkPro_Proyect.Controllers
                                        HoraInicio = horario.HORA_ATENTION.ToString(),
                                        HoraFin = horario.HORA_FIN.ToString()
                                    }).ToList();
+
+                    
                 }
+
+                filtroCount = listHorario.Count();
+                ViewBag.searchCount = filtroCount;
             }
             return PartialView("_TablaHorario", listHorario);
-
         }
 
         public string Guardar(HorarioCLS oHorarioCLS, int titulo, int medic)
@@ -279,6 +283,29 @@ namespace LinkPro_Proyect.Controllers
             return rpta;
         }
 
+        public string Eliminar(int id) 
+        {
+            string rpta = "";
+
+            try
+            {
+                using (var bd = new LinkPro_Test_Old_Update())
+                {
+                    int idHorario = id;
+                    Horario oHorario = bd.Horario.Where(p => p.HORARIOID == idHorario).First();
+                    oHorario.BHABILITADO = 0;
+                    rpta = bd.SaveChanges().ToString();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                rpta = "";
+            }
+            return rpta;
+        }
+
         public JsonResult recuperarDatos(int? id) 
         {
             HorarioCLS oHorarioCLS = new HorarioCLS();
@@ -286,13 +313,9 @@ namespace LinkPro_Proyect.Controllers
             {
                 Horario oHorario = bd.Horario.Where(p => p.HORARIOID == id).First();
                 oHorarioCLS.id_especialidad = (int)oHorario.ID_ESPECIALIDAD;
-                //oHorarioCLS.fecha_atention= (DateTime)oHorario.FECHA_ATENTION;
                 oHorarioCLS.cadena_fechaI = ((DateTime)oHorario.FECHA_ATENTION).ToString("yyyy-MM-dd");
-                //oHorarioCLS.hora_atention =(TimeSpan) oHorario.HORA_ATENTION;
                 oHorarioCLS.HoraInicio = ((TimeSpan)oHorario.HORA_ATENTION).ToString();
                 oHorarioCLS.fecha_fin = (DateTime)oHorario.FECHA_FIN;
-                //oHorarioCLS.cadena_fechaF = ((DateTime)oHorario.FECHA_FIN).ToString("yyyy-MM-dd");
-                //oHorarioCLS.hora_fin = (TimeSpan)oHorario.HORA_FIN;
                 oHorarioCLS.HoraFin = ((TimeSpan)oHorario.HORA_FIN).ToString();
                 oHorarioCLS.id_disp = (int)oHorario.ID_DISP;
             }
@@ -350,7 +373,6 @@ namespace LinkPro_Proyect.Controllers
 
             val = val.Substring(0,10);
             val = val.Replace("/", "-");
-            //char[] valchar = val.ToCharArray();
 
             saux = val.Split(aux);
 

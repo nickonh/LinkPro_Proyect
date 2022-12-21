@@ -106,8 +106,10 @@ namespace LinkPro_Proyect.Controllers
         {
             if (!ModelState.IsValid)
             {
+                llenarCombos();
                 return View(oFichaCLS);
             }
+            llenarCombos();
             int idFicha = oFichaCLS.fichaid;
             using (var bd = new LinkPro_Test_Old_Update())
             {

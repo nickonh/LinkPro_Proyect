@@ -191,11 +191,18 @@
 
 <script>
 
+    let val = 1;
     var Details = document.getElementById("Details");
     Details.onsubmit = function (e) {
         e.preventDefault();
         if (confirm("¿ Desea guardar la Ficha ?") == 1) {
             Details.submit();
+            val = 2;
         }
+        if (val != 1)
+        {
+            alert("Ficha creada")
+        }
+
     }
 </script>
