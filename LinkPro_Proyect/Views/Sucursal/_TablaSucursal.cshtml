@@ -1,0 +1,77 @@
+﻿@model List<LinkPro_Proyect.Models.SucursalCLS>
+
+<div class="" role="main">
+    <div class="">
+        <div class="x_content">
+            <div class="table-responsive">
+                <div id="divSucursal" class="">
+                    <!--Card-->
+                    <div class="card-group">
+                        <div class="card mr-1 text-white bg-info mb-3" style="width: 18rem;">
+                            <div class="card-header">Mi Sucursal - @Html.DisplayNameFor(model => Model[0].nombre_comuna)</div>
+                            <img class="card-img-top" src="~/Content/PlantillaAlela/images/Sucursal.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayNameFor(model => Model[0].nombre_sucursal)</h5>
+                                <p class="card-text">
+                                    @Html.DisplayNameFor(model => Model[0].descripcion)
+                                </p>
+                            </div>
+                            <ul class="text-black-50 list-group list-group-flush">
+                                <li class="list-group-item">
+                                    @Html.DisplayNameFor(model => Model[0].nombre_region)
+                                </li>
+                                <li class="list-group-item">
+                                    @Html.DisplayNameFor(model => Model[0].nombre_ciudad)
+                                </li>
+                                <li class="list-group-item">
+                                    @Html.DisplayNameFor(model => Model[0].nombre_comuna)
+                                </li>
+                                <li class="list-group-item">
+                                    @Html.DisplayNameFor(model => Model[0].direccion)
+                                </li>
+                            </ul>
+                            <div class="card-footer">
+                                Acciones
+                            </div>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="card mr-1 text-white bg-info mb-3" style="width: 18rem;">
+                                <div class="card-header">Mi Sucursal - @Html.DisplayFor(modelItem => item.nombre_comuna)</div>
+                                <img class="card-img-top" src="~/Content/PlantillaAlela/images/Sucursal.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombre_sucursal)</h5>
+                                    <p class="card-text">
+                                        @Html.DisplayFor(modelItem => item.descripcion)
+                                    </p>
+                                </div>
+                                <ul class="text-black-50 list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        @Html.DisplayFor(modelItem => item.nombre_region)
+                                    </li>
+                                    <li class="list-group-item">
+                                        @Html.DisplayFor(modelItem => item.nombre_ciudad)
+                                    </li>
+                                    <li class="list-group-item">
+                                        @Html.DisplayFor(modelItem => item.nombre_comuna)
+                                    </li>
+                                    <li class="list-group-item">
+                                        @Html.DisplayFor(modelItem => item.direccion)
+                                    </li>
+                                </ul>
+
+                                <div class="card-footer">
+                                    <button type="button" onclick="Editar(id=@item.sucursalid)" class="btn btn-info fa fa-pencil-square-o" data-toggle="modal" data-target="#exampleModal">
+                                    </button>
+                                    <button type="button" onclick="Eliminar(id=@item.sucursalid)" class="btn btn-danger fa fa-trash-o" data-toggle="modal" data-target="#exampleModalConfirmacion">
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!--EndCard-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

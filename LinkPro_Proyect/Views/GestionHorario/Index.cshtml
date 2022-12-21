@@ -47,7 +47,7 @@
                             <h3>Horario del Mes </h3>
                         </div>
                         <!--- Buscador --->
-                        <div class="title_right">
+                        @*<div class="title_right">
                             <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search for...">
@@ -56,7 +56,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <!--- /Buscador --->
                     </div>
                 </div>
@@ -128,7 +128,12 @@
                         },
                         navLinks: true,
                         eventLimit: true,
-                        eventClick: function (eventObj) {
+                        eventClick: function (info) {
+                            alert('Event: ' + info.event.title);
+
+
+                            // change the border color just for fun
+                            info.el.style.borderColor = 'red';
                         },
 
                         events: events,

@@ -1,0 +1,207 @@
+﻿@using LinkPro_Proyect.Models
+@model List<SucursalCLS>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> listregion = (List<SelectListItem>)ViewBag.listReg;
+    List<SelectListItem> listciudad = (List<SelectListItem>)ViewBag.listciudad;
+    List<SelectListItem> listcomuna = (List<SelectListItem>)ViewBag.listcomuna;
+
+}
+
+<p>
+    @using (Ajax.BeginForm("Filtrar", "Sucursal", null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "divSucursal",
+        InsertionMode = InsertionMode.Replace
+    }, new { @id = "frmFiltrado" }))
+    {
+        <div class="" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="col title_left">
+                        <h3>Detalles Sucursal</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <button type="button" onclick="Agregar()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Agregar
+                        </button>
+                       <div class="pull-right">
+                            @Html.Label("Ingrese una Ciudad:")
+                            @Html.DropDownList("id_comuna", listcomuna, new {@class= "form-control"})
+                            <input type="submit" value="Buscar" class=" btn btn-primary btn-round" />
+                        </div>
+                        <div class="x_title">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="divSucursal">
+                            @Html.Partial("_TablaSucursal", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</p>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agrega tu hora Disponible</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("Guardar","Sucursal", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                UpdateTargetId = "error"
+            }, new {enctype = "multipart/form-data"}))
+            {
+                @Html.Hidden("titulo")
+                @Html.Hidden("medic")
+                <div class="modal-body">
+
+                    <div>
+                       @Html.Label("Nombre de tú Sucursal")
+                       @Html.TextBox("nombre_sucursal", null, new {@class="form-control" })
+                       @Html.ValidationMessage("nombre_sucursal", new { @class="text-danger"})
+                    </div>
+                    <div>
+                        @Html.Label("Descripción de la Sucursal")
+                        @Html.TextArea("descripcion",null, new {@class="form-control"}),
+                    </div>
+                    <div class="clearfix"></div>
+                    <div>
+                        @Html.Label("Direccion")
+                        @Html.TextBox("direccion", null, new { @class = "form-control"})
+                        @Html.ValidationMessage("direccion", new {@class="text-danger"})
+                    </div>
+                    <div>
+                       @Html.Label("Region")
+                       @Html.DropDownList("id_region", listregion, new {@class="form-control"})
+                    </div>
+                    <div>
+                        @Html.Label("Ciudad")
+                        @Html.DropDownList("id_ciudad", listciudad, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Comuna")
+                        @Html.DropDownList("id_comuna", listcomuna, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Imagen")
+                        <img width="150" height="150" id="imgFoto" style="display:block" />
+                        @Html.TextBox("foto","", new {type="file" , id="fupFoto"})
+                    </div>
+                    <div>
+                        @Html.Hidden("nombre_foto")
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+            <div id="error"></div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Eliminar-->
+<!--<div class="modal fade" id="exampleModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Seguro que deseas Eliminar ésta cita?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCloseEliminar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="EliminarRegistro()" class="btn btn-primary">Aceptar</button>
+            </div>
+
+            <div id="error"></div>
+        </div>
+    </div>
+</div>-->
+
+<script>
+    function limpiar()
+    {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+
+        for (var i = 0; i < ncontroles; i++)
+        {
+            controles[i].value = "";
+        }
+
+        document.getElementById("imgFoto").src = "";
+        document.getElementById("error").innerHTML = "";
+    }
+
+    var frmFiltrado = document.getElementById("frmFiltrado")
+    var id_comuna = document.getElementById("id_comuna");
+    id_comuna.onchange = function ()
+    {
+        $("#frmFiltrado").trigger("submit");
+    }
+
+    function Agregar()
+    {
+
+        limpiar();
+        document.getElementById("titulo").value = -1;
+    }
+
+    function Editar(idSucursal)
+    {
+        document.getElementById("titulo").value = idSucursal;
+
+        $.get("/Sucursal/recuperarDatos/?idSucursal" + idSucursal, function (data)
+        {
+            //Pendiente
+        })
+    }
+
+    function Guardar(rpta)
+    {
+        if (rpta == "1") {
+            alert("Se ejecuto correctamente")
+            document.getElementById("btnClose").click();
+            $("#frmFiltrado").trigger("submit");
+        }
+        else
+        {
+            alert("Ocurrio un Error")
+        }
+    }
+
+    var imgFoto = document.getElementById("imgFoto");
+    var fupFoto = document.getElementById("fupFoto");
+
+    fupFoto.onchange = function ()
+    {
+        var files = fupFoto.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function ()
+        {
+            imgFoto.src = reader.result;
+            document.getElementById("nombre_foto").value = files.name;
+        }
+        reader.readAsDataURL(files);
+
+    }
+    
+</script>

@@ -141,10 +141,12 @@
     <Content Include="Content\PlantillaAlela\images\back_disabled.png" />
     <Content Include="Content\PlantillaAlela\images\back_enabled.png" />
     <Content Include="Content\PlantillaAlela\images\back_enabled_hover.png" />
+    <Content Include="Content\PlantillaAlela\images\Error Busqueda.PNG" />
     <Content Include="Content\PlantillaAlela\images\forward_disabled.png" />
     <Content Include="Content\PlantillaAlela\images\forward_enabled.png" />
     <Content Include="Content\PlantillaAlela\images\forward_enabled_hover.png" />
     <Content Include="Content\PlantillaAlela\images\loading.gif" />
+    <Content Include="Content\PlantillaAlela\images\Sucursal.jpg" />
     <Content Include="Content\PlantillaAlela\images\user.png" />
     <Content Include="Content\PlantillaAlela\js\custom.js" />
     <Content Include="Content\PlantillaAlela\js\custom.min.js" />
@@ -994,6 +996,7 @@
     <Content Include="Scripts\Vendors\switchery\dist\switchery.min.css" />
     <Content Include="Scripts\Vendors\switchery\dist\switchery.min.js" />
     <Content Include="Views\GestionHorario\form.html" />
+    <Content Include="Views\Shared\index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1003,6 +1006,7 @@
     <Compile Include="Controllers\FichaController.cs" />
     <Compile Include="Controllers\GestionHorarioController.cs" />
     <Compile Include="Controllers\GestionPacienteController.cs" />
+    <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1088,6 +1092,7 @@
     <Compile Include="Models\Sucursal.cs">
       <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SucursalCLS.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
@@ -1182,6 +1187,10 @@
     <Content Include="Views\Cita\DetalleCitas.cshtml" />
     <Content Include="Views\GestionHorario\AjustarHorario.cshtml" />
     <Content Include="Views\GestionHorario\_TablaHorario.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Cita\GestionCita.cshtml" />
+    <Content Include="Views\Sucursal\Index.cshtml" />
+    <Content Include="Views\Sucursal\_TablaSucursal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

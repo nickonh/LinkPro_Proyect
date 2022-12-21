@@ -22,13 +22,13 @@
           <Property Name="ID_PACIENTE" Type="int" Nullable="false" />
           <Property Name="ID_ESTADO" Type="int" />
           <Property Name="CODE_RESERVAID" Type="int" />
-          <Property Name="FECHA_ATENCION" Type="varchar" MaxLength="10" />
-          <Property Name="HORA_ATENCION" Type="varchar" MaxLength="8" />
+          <Property Name="FECHA_ATENCION" Type="date" />
+          <Property Name="HORA_ATENCION" Type="time" Precision="0" />
           <Property Name="OBSERVACIONES" Type="varchar" MaxLength="500" />
           <Property Name="ID_HORARIO" Type="int" Nullable="false" />
           <Property Name="BHABILITADO" Type="int" />
-          <Property Name="FECHA_FIN" Type="varchar" MaxLength="10" />
-          <Property Name="HORA_FIN" Type="varchar" MaxLength="8" />
+          <Property Name="FECHA_FIN" Type="date" />
+          <Property Name="HORA_FIN" Type="time" Precision="0" />
         </EntityType>
         <EntityType Name="Ciudad">
           <Key>
@@ -235,6 +235,9 @@
           <Property Name="ID_CIUDAD" Type="int" />
           <Property Name="ID_MEDICO" Type="int" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="200" />
+          <Property Name="FOTO" Type="varbinary(max)" />
+          <Property Name="NOMBRE_FOTO" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -847,7 +850,7 @@
           <Property Name="ID_PACIENTE" Type="Int32" Nullable="false" />
           <Property Name="ID_ESTADO" Type="Int32" />
           <Property Name="CODE_RESERVAID" Type="Int32" />
-          <Property Name="FECHA_ATENCION" Type="String" Unicode="false" MaxLength="10" FixedLength="false" />
+          <Property Name="FECHA_ATENCION" Type="DateTime" Precision="0" />
           <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ID_HORARIO" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_ESTADOC" FromRole="Citas" ToRole="Estado" />
@@ -855,9 +858,9 @@
           <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICOC" FromRole="Citas" ToRole="Medico" />
           <NavigationProperty Name="Paciente" Relationship="Self.FK_PACIENTE" FromRole="Citas" ToRole="Paciente" />
           <Property Name="BHABILITADO" Type="Int32" />
-          <Property Name="HORA_ATENCION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="FECHA_FIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="HORA_FIN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="HORA_ATENCION" Type="Time" Precision="0" />
+          <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+          <Property Name="HORA_FIN" Type="Time" Precision="0" />
         </EntityType>
         <EntityType Name="Ciudad">
           <Key>
@@ -1113,6 +1116,9 @@
           <NavigationProperty Name="Medico" Relationship="Self.FK_MEDICO_SU" FromRole="Sucursal" ToRole="Medico" />
           <NavigationProperty Name="Medico1" Relationship="Self.FK_SUCURSAL" FromRole="Sucursal" ToRole="Medico" />
           <NavigationProperty Name="Region" Relationship="Self.FK_REGION_SU" FromRole="Sucursal" ToRole="Region" />
+          <Property Name="FOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NOMBRE_FOTO" Type="String" FixedLength="false" MaxLength="100" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1950,6 +1956,9 @@
           <EntitySetMapping Name="Sucursal">
             <EntityTypeMapping TypeName="LinkPro_Test_OldModel.Sucursal">
               <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE_FOTO" ColumnName="NOMBRE_FOTO" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
                 <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
                 <ScalarProperty Name="NOMBRE_SUCURSAL" ColumnName="NOMBRE_SUCURSAL" />
                 <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />

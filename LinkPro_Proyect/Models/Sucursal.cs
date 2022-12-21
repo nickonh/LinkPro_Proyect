@@ -30,6 +30,9 @@ namespace LinkPro_Proyect.Models
         public Nullable<int> ID_CIUDAD { get; set; }
         public Nullable<int> ID_MEDICO { get; set; }
         public string DIRECCION { get; set; }
+        public byte[] FOTO { get; set; }
+        public string NOMBRE_FOTO { get; set; }
+        public string DESCRIPCION { get; set; }
     
         public virtual Ciudad Ciudad { get; set; }
         public virtual Comuna Comuna { get; set; }

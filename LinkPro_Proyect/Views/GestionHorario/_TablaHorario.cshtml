@@ -1,11 +1,13 @@
 ﻿@using LinkPro_Proyect.Models
 @model List<HorarioCLS>
-
+@{
+    int cont = (int)ViewBag.searchCount;
+ }
 <div class="" role="main">
     <div class="">
         <div class="x_content">
             <div class="table-responsive">
-                <div id="divHorario">
+                <div id="divHorario" class="">
                     <table class="table table-striped jambo_table">
                         <thead>
                             <tr class="headings">
@@ -27,7 +29,6 @@
                                 <th><label>Acciones</label></th>
                             </tr>
                         </thead>
-
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -49,19 +50,29 @@
                                 <td>
                                     <button type="button" onclick="Editar(id=@item.horarioid)" class="btn btn-info fa fa-pencil-square-o" data-toggle="modal" data-target="#exampleModal">
                                     </button>
-                                    @Html.ActionLink("Details", "Details", new { id = item.horarioid }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.horarioid })
+                                    <button type="button" onclick="Eliminar(id=@item.horarioid)" class="btn btn-danger fa fa-trash-o" data-toggle="modal" data-target="#exampleModalConfirmacion">
+                                    </button>
                                 </td>
                             </tr>
                         }
-
                     </table>
+                    <div class="col">
+                        @if (cont == 0)
+                        {
+                            <img src="~/Content/PlantillaAlela/images/Error Busqueda.PNG" alt="" width="500" />
+
+                            <div class="pull-left col-lg-2">
+                                No se han encontraron resultados de la Busqueda
+                            </div>
+                        }
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
 

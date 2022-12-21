@@ -9,6 +9,19 @@ namespace LinkPro_Proyect.Controllers
 {
     public class CitaController : Controller
     {
+        //GET: Gestionar Cita
+        public ActionResult GestionCita() 
+        {
+            return View();
+        }
+
+        //public ActionResult GestionCita(CitaCLS oCitaCLS) 
+        //{
+
+        //    return View();
+        //}
+
+
         // GET: Cita
         public ActionResult DetalleCitas(int id/*idLog*/)
         {
@@ -31,8 +44,8 @@ namespace LinkPro_Proyect.Controllers
                                 citasid = cita.CITASID,
                                 code_reservaid = (int)cita.CODE_RESERVAID,
                                 nombreEstado = estado.NOMBRE,
-                                fecha_atencion = cita.FECHA_ATENCION,
-                                start_atencion = cita.HORA_ATENCION,
+                                fecha_atencion = (DateTime)cita.FECHA_ATENCION,
+                                hora_atencion = (TimeSpan)cita.HORA_ATENCION,
                                 observaciones = cita.OBSERVACIONES
                             }).ToList();
             }
